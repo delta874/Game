@@ -6,21 +6,21 @@ let selectedParts = [];
 let orders = [
 
 {
-name:"Cybernetic Eye",
-parts:["Lens","Processor","Power Cell"],
-reward:100
+    name: "Cybernetic Eye",
+    parts: ["Lens", "Processor", "Power Cell"],
+    reward: 100
 },
 
 {
-name:"Neural Headset",
-parts:["Processor","Memory Chip","Power Cell"],
-reward:150
+    name: "Neural Headset",
+    parts: ["Processor", "Memory Chip", "Power Cell"],
+    reward: 150
 },
 
 {
-name:"Drone Core",
-parts:["Processor","Gyroscope","Battery"],
-reward:200
+    name: "Drone Core",
+    parts: ["Processor", "Gyroscope", "Battery"],
+    reward: 200
 }
 
 ];
@@ -31,122 +31,122 @@ let currentOrder = 0;
 
 function loadOrder(){
 
-let order = orders[currentOrder];
+    let order = orders[currentOrder];
+
+    document.getElementById("orderName").innerText =
+    order.name;
 
 
-document.getElementById("orderName").innerText =
-order.name;
+    let recipe = document.getElementById("recipe");
+
+    recipe.innerHTML = "";
 
 
-let recipe = document.getElementById("recipe");
+    order.parts.forEach(part => {
 
-recipe.innerHTML="";
+        let item = document.createElement("li");
 
+        item.innerText = part;
 
-order.parts.forEach(part=>{
+        recipe.appendChild(item);
 
-let item=document.createElement("li");
-
-item.innerText=part;
-
-recipe.appendChild(item);
-
-});
+    });
 
 
-selectedParts=[];
+    selectedParts = [];
 
-updateSelected();
-
+    updateSelected();
 
 }
+
 
 
 function selectPart(part){
 
-selectedParts.push(part);
+    selectedParts.push(part);
 
-updateSelected();
+    updateSelected();
 
 }
+
 
 
 function updateSelected(){
 
-let list=document.getElementById("selected");
+    let list = document.getElementById("selected");
 
-list.innerHTML="";
+    list.innerHTML = "";
 
 
-selectedParts.forEach(part=>{
+    selectedParts.forEach(part => {
 
-let item=document.createElement("li");
+        let item = document.createElement("li");
 
-item.innerText=part;
+        item.innerText = part;
 
-list.appendChild(item);
+        list.appendChild(item);
 
-});
-
+    });
 
 }
+
 
 
 function build(){
 
-let order=orders[currentOrder];
+    let order = orders[currentOrder];
 
 
-let correct =
-JSON.stringify(selectedParts.sort()) ===
-JSON.stringify(order.parts.sort());
+    let correct =
+    JSON.stringify(selectedParts.sort()) ===
+    JSON.stringify(order.parts.sort());
 
 
-if(correct){
+    if(correct){
 
-money += order.reward;
-
-
-document.getElementById("money").innerText=money;
+        money += order.reward;
 
 
-document.getElementById("delta").innerText=
-"DELTA: Assembly successful. Payment received.";
+        document.getElementById("money").innerText =
+        money;
+
+
+        document.getElementById("delta").innerText =
+        "DELTA: Assembly successful. Payment received.";
+
+    }
+
+    else {
+
+        document.getElementById("delta").innerText =
+        "DELTA: Incorrect components detected.";
+
+    }
 
 }
 
-else{
-
-
-document.getElementById("delta").innerText=
-"DELTA: Incorrect components detected.";
-
-}
-
-
-}
 
 
 function nextOrder(){
 
-currentOrder++;
+    currentOrder++;
 
 
-if(currentOrder >= orders.length){
+    if(currentOrder >= orders.length){
 
-currentOrder=0;
+        currentOrder = 0;
+
+    }
+
+
+    document.getElementById("delta").innerText =
+    "DELTA: New order received.";
+
+
+    loadOrder();
 
 }
 
-
-document.getElementById("delta").innerText=
-"DELTA: New order received.";
-
-
-loadOrder();
-
-
-}
 
 
 loadOrder();

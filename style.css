@@ -1,164 +1,209 @@
 body {
-    background:
-    linear-gradient(rgba(5,5,20,0.85), rgba(5,5,20,0.95)),
-    radial-gradient(circle, #202040, #050510);
 
-    color: #e8ffff;
-    font-family: monospace;
-    text-align: center;
+background:
+linear-gradient(
+rgba(5,5,20,0.8),
+rgba(5,5,20,1)
+),
 
-    margin: 0;
-    padding: 30px;
+url("https://i.imgur.com/8QZQZQZ.png");
+
+background-size:cover;
+
+color:#eaffff;
+
+font-family:monospace;
+
+text-align:center;
+
+margin:0;
+
+padding:20px;
+
 }
 
 
-/* Main workshop screen */
+/* Workshop room */
+
+.workshop {
+
+position:relative;
+
+min-height:700px;
+
+padding-top:40px;
+
+overflow:hidden;
+
+}
+
+
+
+/* Fake city window */
+
+.window {
+
+position:absolute;
+
+top:20px;
+
+right:30px;
+
+width:200px;
+
+height:180px;
+
+border:2px solid cyan;
+
+background:#050510;
+
+box-shadow:
+0 0 20px cyan;
+
+}
+
+
+.city {
+
+height:100%;
+
+background:
+
+linear-gradient(
+90deg,
+transparent 20%,
+#ff00ff 20%,
+#ff00ff 25%,
+transparent 25%
+);
+
+opacity:.4;
+
+}
+
+
+
+/* Delta hologram */
+
+.delta {
+
+position:absolute;
+
+top:80px;
+
+left:60px;
+
+color:#00ffff;
+
+font-size:50px;
+
+animation:
+
+float 3s infinite ease-in-out;
+
+text-shadow:
+
+0 0 10px cyan,
+0 0 30px cyan;
+
+}
+
+
+.delta p {
+
+font-size:15px;
+
+}
+
+
+
+/* Floating animation */
+
+@keyframes float {
+
+0% {
+
+transform:translateY(0);
+
+}
+
+
+50% {
+
+transform:translateY(-20px);
+
+}
+
+
+100% {
+
+transform:translateY(0);
+
+}
+
+}
+
+
+
+/* Main UI */
 
 .game {
 
-    width: 550px;
-    max-width: 90%;
+position:relative;
 
-    margin: auto;
+z-index:2;
 
-    background: rgba(15,15,35,0.9);
+width:550px;
 
-    border: 2px solid #00ffff;
+max-width:90%;
 
-    padding: 30px;
+margin:auto;
 
-    border-radius: 15px;
+background:
 
-    box-shadow:
-    0 0 20px #00ffff,
-    inset 0 0 20px rgba(0,255,255,0.2);
+rgba(10,10,25,.9);
 
-}
+border:2px solid cyan;
 
+padding:30px;
 
-/* Title */
+border-radius:15px;
 
-h1 {
+box-shadow:
 
-    color: #ff4cff;
-
-    text-shadow:
-    0 0 5px #ff4cff,
-    0 0 15px #ff4cff;
-
-    letter-spacing: 3px;
+0 0 25px cyan;
 
 }
 
-
-h2 {
-
-    color:#00ffff;
-
-}
-
-
-/* Sections */
-
-.order-box,
-.parts-box {
-
-    background:
-    rgba(0,0,0,0.35);
-
-    border:1px solid #00ffff;
-
-    border-radius:10px;
-
-    padding:20px;
-
-    margin:20px 0;
-
-}
 
 
 /* Buttons */
 
 button {
 
-    background:#111;
+background:#111;
 
-    color:#00ffff;
+color:#00ffff;
 
-    border:1px solid #00ffff;
+border:1px solid cyan;
 
-    border-radius:8px;
+padding:12px;
 
-    padding:12px 18px;
+margin:5px;
 
-    margin:6px;
+cursor:pointer;
 
-    font-family:monospace;
-
-    cursor:pointer;
-
-    transition:0.2s;
+transition:.3s;
 
 }
 
 
 button:hover {
 
-    background:#00ffff;
+background:#00ffff;
 
-    color:#050510;
+color:#000;
 
-    box-shadow:
-    0 0 15px #00ffff;
-
-    transform:scale(1.05);
-
-}
-
-
-/* Money */
-
-#money {
-
-    color:#00ff88;
-
-    text-shadow:
-    0 0 10px #00ff88;
-
-}
-
-
-/* Delta message */
-
-#delta {
-
-    color:#ffccff;
-
-    border-top:1px solid #ff00ff;
-
-    padding-top:15px;
-
-    margin-top:25px;
-
-    text-shadow:
-    0 0 8px #ff00ff;
-
-}
-
-
-/* Lists */
-
-ul {
-
-    padding:0;
-
-}
-
-
-li {
-
-    list-style:none;
-
-    margin:8px;
+transform:scale(1.05);
 
 }

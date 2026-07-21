@@ -25,6 +25,7 @@ body {
 }
 
 
+/* Workshop space */
 
 .workshop {
 
@@ -40,34 +41,35 @@ body {
 
 
 
-/* Neon city window */
+/* City window */
 
 .window {
 
     position:absolute;
 
-    top:20px;
+    top:30px;
 
-    right:30px;
+    right:20px;
 
-    width:220px;
+    width:280px;
 
-    height:180px;
+    height:220px;
 
     border:3px solid #00ffff;
 
     background:
     linear-gradient(
     180deg,
-    rgba(0,255,255,0.15),
-    rgba(255,0,255,0.15)
+    rgba(0,255,255,0.2),
+    rgba(255,0,255,0.2)
     );
 
     overflow:hidden;
 
     box-shadow:
-    0 0 20px #00ffff,
-    0 0 40px #00ffff;
+
+    0 0 20px cyan,
+    0 0 50px cyan;
 
     z-index:1;
 
@@ -85,6 +87,7 @@ body {
 
     linear-gradient(
     90deg,
+
     transparent 10%,
     #ff00ff 10%,
     #ff00ff 15%,
@@ -99,6 +102,7 @@ body {
     #ff00ff 65%,
     #ff00ff 75%,
     transparent 75%
+
     );
 
     opacity:0.7;
@@ -113,13 +117,13 @@ body {
 
     position:absolute;
 
-    top:80px;
+    top:50px;
 
-    left:60px;
+    left:20px;
 
     color:white;
 
-    font-size:60px;
+    font-size:70px;
 
     animation:float 3s infinite ease-in-out;
 
@@ -134,7 +138,6 @@ body {
 }
 
 
-
 .delta p {
 
     font-size:15px;
@@ -143,7 +146,7 @@ body {
 
 
 
-/* Floating animation */
+/* Delta floating animation */
 
 @keyframes float {
 
@@ -171,7 +174,7 @@ body {
 
 
 
-/* Main workshop screen */
+/* Main workshop terminal */
 
 .game {
 
@@ -179,19 +182,19 @@ body {
 
     z-index:2;
 
-    width:550px;
+    width:420px;
 
-    max-width:90%;
+    max-width:80%;
 
     margin:auto;
 
-    background:rgba(10,10,25,0.65);
+    background:rgba(10,10,25,0.45);
 
-    backdrop-filter:blur(5px);
+    backdrop-filter:blur(2px);
 
     border:2px solid cyan;
 
-    padding:30px;
+    padding:20px;
 
     border-radius:15px;
 
@@ -199,7 +202,7 @@ body {
 
     0 0 25px cyan,
 
-    inset 0 0 20px rgba(0,255,255,0.2);
+    inset 0 0 15px rgba(0,255,255,0.2);
 
 }
 
@@ -221,7 +224,6 @@ h1 {
 }
 
 
-
 h2 {
 
     color:#00ffff;
@@ -235,15 +237,15 @@ h2 {
 .order-box,
 .parts-box {
 
-    background:rgba(0,0,0,0.35);
+    background:rgba(0,0,0,0.25);
 
     border:1px solid cyan;
 
     border-radius:10px;
 
-    padding:20px;
+    padding:15px;
 
-    margin:20px 0;
+    margin:15px 0;
 
 }
 
@@ -261,9 +263,9 @@ button {
 
     border-radius:8px;
 
-    padding:12px 18px;
+    padding:10px 15px;
 
-    margin:6px;
+    margin:5px;
 
     font-family:monospace;
 
@@ -295,13 +297,15 @@ button:hover {
 
     color:#00ff88;
 
-    text-shadow:0 0 15px #00ff88;
+    text-shadow:
+
+    0 0 15px #00ff88;
 
 }
 
 
 
-/* Delta messages */
+/* Delta message */
 
 #delta {
 
@@ -311,9 +315,11 @@ button:hover {
 
     padding-top:15px;
 
-    margin-top:25px;
+    margin-top:20px;
 
-    text-shadow:0 0 10px #ff00ff;
+    text-shadow:
+
+    0 0 10px #ff00ff;
 
 }
 

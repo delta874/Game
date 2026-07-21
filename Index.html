@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delta's Workshop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="panel">
+
+    <h1>DELTA'S WORKSHOP</h1>
+
+    <h2 id="order">Cybernetic Eye</h2>
+
+    <p>Money: $<span id="money">0</span></p>
+
+    <h3>Select Parts</h3>
+
+    <label>
+        <input type="checkbox" id="lens">
+        Lens
+    </label>
+
+    <br>
+
+    <label>
+        <input type="checkbox" id="processor">
+        Processor
+    </label>
+
+    <br>
+
+    <label>
+        <input type="checkbox" id="power">
+        Power Cell
+    </label>
+
+    <br><br>
+
+    <button onclick="buildItem()">
+        BUILD
+    </button>
+
+    <p id="message">
+        DELTA: Waiting for assembly...
+    </p>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

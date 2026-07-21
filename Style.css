@@ -1,0 +1,27 @@
+body{
+    background:#0a0a0f;
+    color:#00ffff;
+    font-family:monospace;
+    text-align:center;
+    padding-top:40px;
+}
+
+.panel{
+    width:400px;
+    margin:auto;
+    border:2px solid cyan;
+    padding:20px;
+    background:#111;
+}
+
+button{
+    margin:5px;
+    padding:10px 20px;
+    font-family:monospace;
+    cursor:pointer;
+}
+
+#message{
+    color:#00ff88;
+    margin-top:20px;
+}

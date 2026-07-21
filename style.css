@@ -1,14 +1,17 @@
 body {
+
     background: #080812;
     color: #00ffff;
     font-family: monospace;
     text-align: center;
     margin: 0;
     padding: 20px;
+
 }
 
 
 .game {
+
     width: 500px;
     max-width: 90%;
     margin: auto;
@@ -16,30 +19,31 @@ body {
     border: 2px solid #00ffff;
     padding: 25px;
     border-radius: 10px;
+
 }
 
 
 h1 {
+
     color: #ff00ff;
     text-shadow: 0 0 10px #ff00ff;
-}
 
-
-h2 {
-    color: #00ffff;
 }
 
 
 .order-box,
 .parts-box {
+
     border: 1px solid #00ffff;
     padding: 15px;
     margin: 15px 0;
     background: #0d0d18;
+
 }
 
 
 button {
+
     background: #11111c;
     color: #00ffff;
     border: 1px solid #00ffff;
@@ -47,29 +51,38 @@ button {
     margin: 5px;
     font-family: monospace;
     cursor: pointer;
+
 }
 
 
 button:hover {
+
     background: #00ffff;
     color: #080812;
+
 }
 
 
 ul {
+
     padding: 0;
+
 }
 
 
 li {
+
     list-style: none;
     margin: 5px;
+
 }
 
 
 #delta {
+
     color: #00ff88;
     border-top: 1px solid #00ff88;
     padding-top: 15px;
     margin-top: 20px;
+
 }

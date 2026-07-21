@@ -1,84 +1,90 @@
-}
 body {
 
-background:
-linear-gradient(
-rgba(5,5,20,0.8),
-rgba(5,5,20,1)
-),
+    background:
+    linear-gradient(
+    rgba(5,5,20,0.45),
+    rgba(5,5,20,0.75)
+    ),
 
-url("https://i.imgur.com/8QZQZQZ.png");
+    linear-gradient(
+    135deg,
+    #101030,
+    #050510
+    );
 
-background-size:cover;
+    color:#eaffff;
 
-color:#eaffff;
+    font-family:monospace;
 
-font-family:monospace;
+    text-align:center;
 
-text-align:center;
+    margin:0;
 
-margin:0;
-
-padding:20px;
+    padding:20px;
 
 }
 
 
-/* Workshop room */
+
+/* Whole workshop area */
 
 .workshop {
 
-position:relative;
+    position:relative;
 
-min-height:700px;
+    min-height:700px;
 
-padding-top:40px;
+    padding-top:40px;
 
-overflow:hidden;
+    overflow:hidden;
 
 }
 
 
 
-/* Fake city window */
+/* City window */
 
 .window {
 
-position:absolute;
+    position:absolute;
 
-top:20px;
+    top:20px;
 
-right:30px;
+    right:30px;
 
-width:200px;
+    width:220px;
 
-height:180px;
+    height:180px;
 
-border:2px solid cyan;
+    border:3px solid #00ffff;
 
-background:#050510;
+    background:rgba(20,20,60,0.8);
 
-box-shadow:
-0 0 20px cyan;
+    box-shadow:
+    0 0 20px #00ffff,
+    0 0 40px #00ffff;
+
+    z-index:1;
 
 }
+
 
 
 .city {
 
-height:100%;
+    height:100%;
 
-background:
+    background:
 
-linear-gradient(
-90deg,
-transparent 20%,
-#ff00ff 20%,
-#ff00ff 25%,
-transparent 25%
-);
+    linear-gradient(
+    90deg,
+    transparent 15%,
+    #ff00ff 15%,
+    #ff00ff 20%,
+    transparent 20%
+    );
 
-opacity:.4;
+    opacity:0.6;
 
 }
 
@@ -88,31 +94,33 @@ opacity:.4;
 
 .delta {
 
-position:absolute;
+    position:absolute;
 
-top:80px;
+    top:80px;
 
-left:60px;
+    left:60px;
 
-color:#00ffff;
+    color:#ffffff;
 
-font-size:50px;
+    font-size:60px;
 
-animation:
+    animation:float 3s infinite ease-in-out;
 
-float 3s infinite ease-in-out;
+    text-shadow:
 
-text-shadow:
+    0 0 10px cyan,
+    0 0 30px cyan,
+    0 0 60px cyan;
 
-0 0 10px cyan,
-0 0 30px cyan;
+    z-index:5;
 
 }
 
 
+
 .delta p {
 
-font-size:15px;
+    font-size:15px;
 
 }
 
@@ -122,31 +130,32 @@ font-size:15px;
 
 @keyframes float {
 
-0% {
 
-transform:translateY(0);
+    0% {
+
+        transform:translateY(0);
+
+    }
+
+
+    50% {
+
+        transform:translateY(-20px);
+
+    }
+
+
+    100% {
+
+        transform:translateY(0);
+
+    }
 
 }
 
 
-50% {
 
-transform:translateY(-20px);
-
-}
-
-
-100% {
-
-transform:translateY(0);
-
-}
-
-}
-
-
-
-/* Main UI */
+/* Main game screen */
 
 .game {
 
@@ -171,8 +180,54 @@ transform:translateY(0);
     border-radius:15px;
 
     box-shadow:
+
     0 0 25px cyan,
+
     inset 0 0 20px rgba(0,255,255,0.2);
+
+}
+
+
+
+/* Title */
+
+h1 {
+
+    color:#ff4cff;
+
+    text-shadow:
+
+    0 0 10px #ff4cff,
+    0 0 25px #ff4cff;
+
+    letter-spacing:3px;
+
+}
+
+
+
+h2 {
+
+    color:#00ffff;
+
+}
+
+
+
+/* Boxes */
+
+.order-box,
+.parts-box {
+
+    background:rgba(0,0,0,0.35);
+
+    border:1px solid #00ffff;
+
+    border-radius:10px;
+
+    padding:20px;
+
+    margin:20px 0;
 
 }
 
@@ -182,29 +237,91 @@ transform:translateY(0);
 
 button {
 
-background:#111;
+    background:#11111c;
 
-color:#00ffff;
+    color:#00ffff;
 
-border:1px solid cyan;
+    border:1px solid cyan;
 
-padding:12px;
+    border-radius:8px;
 
-margin:5px;
+    padding:12px 18px;
 
-cursor:pointer;
+    margin:6px;
 
-transition:.3s;
+    font-family:monospace;
+
+    cursor:pointer;
+
+    transition:0.3s;
 
 }
 
 
+
 button:hover {
 
-background:#00ffff;
+    background:#00ffff;
 
-color:#000;
+    color:#050510;
 
-transform:scale(1.05);
+    box-shadow:
+
+    0 0 20px cyan;
+
+    transform:scale(1.05);
+
+}
+
+
+
+/* Money */
+
+#money {
+
+    color:#00ff88;
+
+    text-shadow:
+
+    0 0 15px #00ff88;
+
+}
+
+
+
+/* Delta text */
+
+#delta {
+
+    color:#ffccff;
+
+    border-top:1px solid #ff00ff;
+
+    padding-top:15px;
+
+    margin-top:25px;
+
+    text-shadow:
+
+    0 0 10px #ff00ff;
+
+}
+
+
+
+/* Lists */
+
+ul {
+
+    padding:0;
+
+}
+
+
+li {
+
+    list-style:none;
+
+    margin:8px;
 
 }

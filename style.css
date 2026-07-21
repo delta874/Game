@@ -1,129 +1,78 @@
-body {
+body{
 
-    background:
-    linear-gradient(
-    rgba(5,5,20,0.45),
-    rgba(5,5,20,0.75)
-    ),
+    background:#080812;
 
-    linear-gradient(
-    135deg,
-    #101030,
-    #050510
-    );
-
-    color:#eaffff;
+    color:#e8ffff;
 
     font-family:monospace;
 
+    margin:20px;
+
+}
+
+
+
+/* Top area */
+
+.top-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+}
+
+
+
+.order-panel{
+
+    width:250px;
+
+    border:2px solid cyan;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    box-shadow:0 0 15px cyan;
+
+}
+
+
+
+.money-panel{
+
+    font-size:28px;
+
+    color:#00ff88;
+
+    text-shadow:0 0 10px #00ff88;
+
+}
+
+
+
+/* Delta */
+
+.delta-panel{
+
     text-align:center;
 
-    margin:0;
+    margin-top:40px;
 
-    padding:20px;
-
-}
-
-
-/* Workshop space */
-
-.workshop {
-
-    position:relative;
-
-    min-height:700px;
-
-    padding-top:40px;
-
-    overflow:hidden;
+    margin-bottom:40px;
 
 }
 
 
 
-/* City window */
-
-.window {
-
-    position:absolute;
-
-    top:30px;
-
-    right:20px;
-
-    width:280px;
-
-    height:220px;
-
-    border:3px solid #00ffff;
-
-    background:
-    linear-gradient(
-    180deg,
-    rgba(0,255,255,0.2),
-    rgba(255,0,255,0.2)
-    );
-
-    overflow:hidden;
-
-    box-shadow:
-
-    0 0 20px cyan,
-    0 0 50px cyan;
-
-    z-index:1;
-
-}
-
-
-
-.city {
-
-    width:100%;
-
-    height:100%;
-
-    background:
-
-    linear-gradient(
-    90deg,
-
-    transparent 10%,
-    #ff00ff 10%,
-    #ff00ff 15%,
-    transparent 15%,
-
-    transparent 35%,
-    #00ffff 35%,
-    #00ffff 42%,
-    transparent 42%,
-
-    transparent 65%,
-    #ff00ff 65%,
-    #ff00ff 75%,
-    transparent 75%
-
-    );
-
-    opacity:0.7;
-
-}
-
-
-
-/* Delta hologram */
-
-.delta {
-
-    position:absolute;
-
-    top:50px;
-
-    left:20px;
-
-    color:white;
+.delta-orb{
 
     font-size:70px;
+
+    color:cyan;
 
     animation:float 3s infinite ease-in-out;
 
@@ -131,40 +80,27 @@ body {
 
     0 0 10px cyan,
     0 0 30px cyan,
-    0 0 60px cyan;
-
-    z-index:5;
-
-}
-
-
-.delta p {
-
-    font-size:15px;
+    0 0 50px cyan;
 
 }
 
 
 
-/* Delta floating animation */
+@keyframes float{
 
-@keyframes float {
-
-    0% {
+    0%{
 
         transform:translateY(0);
 
     }
 
+    50%{
 
-    50% {
-
-        transform:translateY(-20px);
+        transform:translateY(-15px);
 
     }
 
-
-    100% {
+    100%{
 
         transform:translateY(0);
 
@@ -174,170 +110,76 @@ body {
 
 
 
-/* Main workshop terminal */
+/* Workbench */
 
-.game {
-
-    position:relative;
-
-    z-index:2;
-
-    width:420px;
-
-    max-width:80%;
-
-    margin:auto;
-
-    background:rgba(10,10,25,0.45);
-
-    backdrop-filter:blur(2px);
+.resource-panel{
 
     border:2px solid cyan;
 
     padding:20px;
 
-    border-radius:15px;
-
-    box-shadow:
-
-    0 0 25px cyan,
-
-    inset 0 0 15px rgba(0,255,255,0.2);
-
-}
-
-
-
-/* Title */
-
-h1 {
-
-    color:#ff4cff;
-
-    text-shadow:
-
-    0 0 10px #ff4cff,
-    0 0 25px #ff4cff;
-
-    letter-spacing:3px;
-
-}
-
-
-h2 {
-
-    color:#00ffff;
-
-}
-
-
-
-/* Order and parts panels */
-
-.order-box,
-.parts-box {
-
-    background:rgba(0,0,0,0.25);
-
-    border:1px solid cyan;
-
     border-radius:10px;
 
-    padding:15px;
+    box-shadow:0 0 15px cyan;
 
-    margin:15px 0;
+    text-align:center;
 
 }
 
 
 
-/* Buttons */
+button{
 
-button {
+    background:#111;
 
-    background:#11111c;
-
-    color:#00ffff;
+    color:cyan;
 
     border:1px solid cyan;
-
-    border-radius:8px;
 
     padding:10px 15px;
 
     margin:5px;
 
-    font-family:monospace;
+    border-radius:8px;
 
     cursor:pointer;
 
-    transition:0.3s;
+}
+
+
+
+button:hover{
+
+    background:cyan;
+
+    color:black;
 
 }
 
 
 
-button:hover {
+.action-panel{
 
-    background:#00ffff;
-
-    color:#050510;
-
-    box-shadow:0 0 20px cyan;
-
-    transform:scale(1.05);
-
-}
-
-
-
-/* Money */
-
-#money {
-
-    color:#00ff88;
-
-    text-shadow:
-
-    0 0 15px #00ff88;
-
-}
-
-
-
-/* Delta message */
-
-#delta {
-
-    color:#ffccff;
-
-    border-top:1px solid #ff00ff;
-
-    padding-top:15px;
+    text-align:center;
 
     margin-top:20px;
 
-    text-shadow:
-
-    0 0 10px #ff00ff;
-
 }
 
 
 
-/* Lists */
-
-ul {
+ul{
 
     padding:0;
 
 }
 
 
-li {
+
+li{
 
     list-style:none;
 
-    margin:8px;
+    margin:5px;
 
 }

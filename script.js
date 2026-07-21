@@ -2,6 +2,8 @@ let money = 0;
 
 let selectedParts = [];
 
+let startTime;
+
 
 let orders = [
 
@@ -29,6 +31,7 @@ let orders = [
 let currentOrder = 0;
 
 
+
 function loadOrder(){
 
     let order = orders[currentOrder];
@@ -42,7 +45,7 @@ function loadOrder(){
     recipe.innerHTML = "";
 
 
-    order.parts.forEach(part => {
+    order.parts.forEach(part=>{
 
         let item = document.createElement("li");
 
@@ -56,6 +59,13 @@ function loadOrder(){
     selectedParts = [];
 
     updateSelected();
+
+
+    startTime = Date.now();
+
+
+    document.getElementById("delta").innerText =
+    "DELTA: Timer started. Begin assembly.";
 
 }
 
@@ -78,7 +88,7 @@ function updateSelected(){
     list.innerHTML = "";
 
 
-    selectedParts.forEach(part => {
+    selectedParts.forEach(part=>{
 
         let item = document.createElement("li");
 
@@ -104,7 +114,28 @@ function build(){
 
     if(correct){
 
-        money += order.reward;
+
+        let timeTaken =
+        (Date.now() - startTime) / 1000;
+
+
+        let reward = order.reward;
+
+
+        if(timeTaken > 20){
+
+            reward = Math.floor(reward * 0.5);
+
+        }
+
+        else if(timeTaken > 10){
+
+            reward = Math.floor(reward * 0.75);
+
+        }
+
+
+        money += reward;
 
 
         document.getElementById("money").innerText =
@@ -112,14 +143,17 @@ function build(){
 
 
         document.getElementById("delta").innerText =
-        "DELTA: Assembly successful. Payment received.";
+        "DELTA: Assembly complete. Payment: $" + reward;
+
 
     }
 
-    else {
+    else{
+
 
         document.getElementById("delta").innerText =
         "DELTA: Incorrect components detected.";
+
 
     }
 
@@ -137,10 +171,6 @@ function nextOrder(){
         currentOrder = 0;
 
     }
-
-
-    document.getElementById("delta").innerText =
-    "DELTA: New order received.";
 
 
     loadOrder();

@@ -26,8 +26,6 @@ body {
 
 
 
-/* Whole workshop area */
-
 .workshop {
 
     position:relative;
@@ -42,7 +40,7 @@ body {
 
 
 
-/* City window */
+/* Neon city window */
 
 .window {
 
@@ -91,10 +89,12 @@ body {
     #ff00ff 10%,
     #ff00ff 15%,
     transparent 15%,
+
     transparent 35%,
     #00ffff 35%,
     #00ffff 42%,
     transparent 42%,
+
     transparent 65%,
     #ff00ff 65%,
     #ff00ff 75%,
@@ -104,8 +104,6 @@ body {
     opacity:0.7;
 
 }
-
-
 
 
 
@@ -119,7 +117,7 @@ body {
 
     left:60px;
 
-    color:#ffffff;
+    color:white;
 
     font-size:60px;
 
@@ -149,7 +147,6 @@ body {
 
 @keyframes float {
 
-
     0% {
 
         transform:translateY(0);
@@ -174,7 +171,7 @@ body {
 
 
 
-/* Main game screen */
+/* Main workshop screen */
 
 .game {
 
@@ -233,14 +230,14 @@ h2 {
 
 
 
-/* Boxes */
+/* Order and parts panels */
 
 .order-box,
 .parts-box {
 
     background:rgba(0,0,0,0.35);
 
-    border:1px solid #00ffff;
+    border:1px solid cyan;
 
     border-radius:10px;
 
@@ -284,9 +281,7 @@ button:hover {
 
     color:#050510;
 
-    box-shadow:
-
-    0 0 20px cyan;
+    box-shadow:0 0 20px cyan;
 
     transform:scale(1.05);
 
@@ -300,15 +295,13 @@ button:hover {
 
     color:#00ff88;
 
-    text-shadow:
-
-    0 0 15px #00ff88;
+    text-shadow:0 0 15px #00ff88;
 
 }
 
 
 
-/* Delta text */
+/* Delta messages */
 
 #delta {
 
@@ -320,9 +313,7 @@ button:hover {
 
     margin-top:25px;
 
-    text-shadow:
-
-    0 0 10px #ff00ff;
+    text-shadow:0 0 10px #ff00ff;
 
 }
 

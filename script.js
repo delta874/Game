@@ -5,6 +5,10 @@ let energy = 100;
 let seekerActivity = 20;
 
 
+// =====================
+// METERS
+// =====================
+
 
 function updateMeters(){
 
@@ -29,7 +33,6 @@ function updateMeters(){
 
 
 
-
 function changeSanity(amount){
 
     sanity += amount;
@@ -40,7 +43,6 @@ function changeSanity(amount){
     updateMeters();
 
 }
-
 
 
 
@@ -56,6 +58,23 @@ function changeEnergy(amount){
 }
 
 
+
+function changeAwareness(amount){
+
+    seekerActivity += amount;
+
+    if(seekerActivity > 100) seekerActivity = 100;
+    if(seekerActivity < 0) seekerActivity = 0;
+
+    updateMeters();
+
+}
+
+
+
+// =====================
+// SCENE SYSTEM
+// =====================
 
 
 function setScene(text, buttons){
@@ -84,9 +103,10 @@ function setScene(text, buttons){
 
 
 
-
-
+// =====================
 // MAIN MENU
+// =====================
+
 
 function startMenu(){
 
@@ -133,8 +153,6 @@ action:settings
 
 
 
-
-
 function startGame(){
 
 night = 1;
@@ -156,7 +174,10 @@ nightOne();
 
 
 
+// =====================
 // NIGHT 1
+// =====================
+
 
 function nightOne(){
 
@@ -171,7 +192,7 @@ You wake up on the couch.
 </p>
 
 <p>
-The television is still playing quietly.
+The television is playing quietly.
 </p>
 
 <p>
@@ -179,7 +200,7 @@ The clock reads 11:02 PM.
 </p>
 
 <p>
-For a moment, everything feels normal.
+For a moment everything feels normal.
 </p>
 
 `,
@@ -205,9 +226,10 @@ action:makeCoffee
 
 
 
+
 function checkPhone(){
 
-changeSanity(-2);
+changeSanity(10);
 
 
 setScene(`
@@ -224,6 +246,10 @@ MOM:
 <p>
 DAD:
 "Remember to lock the back door."
+</p>
+
+<p>
+You stare at the message for a moment.
 </p>
 
 `,
@@ -251,7 +277,9 @@ action:makeCoffee
 
 function makeCoffee(){
 
-changeEnergy(5);
+changeEnergy(10);
+
+changeSanity(5);
 
 
 setScene(`
@@ -266,6 +294,45 @@ The coffee machine turns on.
 
 <p>
 You never pressed the button.
+</p>
+
+`,
+
+[
+
+{
+text:"CHECK MACHINE",
+action:checkMachine
+},
+
+{
+text:"WATCH TV",
+action:watchTV
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function checkMachine(){
+
+changeSanity(-5);
+
+
+setScene(`
+
+<p>
+The machine looks normal.
+</p>
+
+<p>
+But the coffee is already made.
 </p>
 
 `,
@@ -291,15 +358,17 @@ function checkBackDoor(){
 
 changeSanity(-5);
 
-seekerActivity += 5;
-
-updateMeters();
+changeAwareness(5);
 
 
 setScene(`
 
 <p>
-The back door is unlocked.
+You walk toward the back door.
+</p>
+
+<p>
+The lock is open.
 </p>
 
 <p>
@@ -321,7 +390,9 @@ action:watchTV
 
 }
 
-
+// =====================
+// NIGHT 1 CONTINUED
+// =====================
 
 
 function watchTV(){
@@ -334,11 +405,15 @@ setScene(`
 
 <p>
 Reports indicate a group known as
-"The Seekers" has been sighted nearby.
+"The Seekers" has been sighted throughout the county.
 </p>
 
 <p>
 Residents are advised to remain indoors.
+</p>
+
+<p>
+The broadcast suddenly cuts to static.
 </p>
 
 `,
@@ -359,14 +434,11 @@ action:doorEvent
 
 
 
-
 function doorEvent(){
 
 changeSanity(-10);
 
-seekerActivity += 10;
-
-updateMeters();
+changeAwareness(10);
 
 
 setScene(`
@@ -377,6 +449,10 @@ You hear metal scraping.
 
 <p>
 Someone is trying the front door.
+</p>
+
+<p>
+Your heart starts racing.
 </p>
 
 `,
@@ -399,6 +475,9 @@ action:lockDoor
 
 function lockDoor(){
 
+changeAwareness(-5);
+
+
 setScene(`
 
 <p>
@@ -409,14 +488,17 @@ You lock the door.
 The footsteps outside slowly disappear.
 </p>
 
+<p>
+You don't sleep much after that.
+</p>
+
 `,
 
 [
 
 {
-text:"END NIGHT",
+text:"CONTINUE",
 action:nightTwo
-
 }
 
 ]
@@ -428,7 +510,11 @@ action:nightTwo
 
 
 
+
+// =====================
 // NIGHT 2
+// =====================
+
 
 function nightTwo(){
 
@@ -442,15 +528,19 @@ setScene(`
 </p>
 
 <p>
-You survived the first night.
+You barely slept.
 </p>
 
 <p>
-But now you need answers.
+The house feels different tonight.
 </p>
 
 <p>
 The television turns on by itself.
+</p>
+
+<p>
+Static fills the room.
 </p>
 
 `,
@@ -458,8 +548,160 @@ The television turns on by itself.
 [
 
 {
-text:"WATCH BROADCAST",
-action:nightTwoBroadcast
+text:"WATCH SIGNAL",
+action:watchSignal
+},
+
+{
+text:"TURN OFF TV",
+action:turnOffTV
+}
+
+]
+
+);
+
+}
+
+
+
+
+function watchSignal(){
+
+changeSanity(-10);
+
+changeAwareness(10);
+
+
+setScene(`
+
+<p>
+[UNKNOWN SIGNAL]
+</p>
+
+<p>
+The broadcast is not news.
+</p>
+
+<p>
+It is an old recording.
+</p>
+
+<p>
+A voice says:
+</p>
+
+<p>
+"If you can see this, they already know where you are."
+</p>
+
+`,
+
+[
+
+{
+text:"CHECK CAMERAS",
+action:cameraCheck
+},
+
+{
+text:"TURN IT OFF",
+action:turnOffTV
+}
+
+]
+
+);
+
+}
+
+
+
+
+function turnOffTV(){
+
+changeSanity(5);
+
+changeAwareness(-5);
+
+
+setScene(`
+
+<p>
+You turn off the television.
+</p>
+
+<p>
+The room becomes silent.
+</p>
+
+<p>
+For a moment, you feel safe.
+</p>
+
+<p>
+Then you hear something outside.
+</p>
+
+`,
+
+[
+
+{
+text:"LOOK OUT WINDOW",
+action:lookWindow
+},
+
+{
+text:"IGNORE IT",
+action:ignoreNoise
+}
+
+]
+
+);
+
+}
+
+
+
+
+function lookWindow(){
+
+changeSanity(-5);
+
+changeAwareness(5);
+
+
+setScene(`
+
+<p>
+You slowly look outside.
+</p>
+
+<p>
+A person is standing across the street.
+</p>
+
+<p>
+They are completely still.
+</p>
+
+<p>
+You blink.
+</p>
+
+<p>
+They are gone.
+</p>
+
+`,
+
+[
+
+{
+text:"CHECK CAMERAS",
+action:cameraCheck
 }
 
 ]
@@ -472,27 +714,162 @@ action:nightTwoBroadcast
 
 
 
-function nightTwoBroadcast(){
+function ignoreNoise(){
 
-changeSanity(-5);
+changeSanity(5);
 
-seekerActivity += 10;
-
-updateMeters();
+changeAwareness(-5);
 
 
 setScene(`
 
 <p>
-[UNKNOWN SIGNAL]
+You decide not to look.
 </p>
 
 <p>
-"The Seekers are looking for something."
+Whatever is outside can stay outside.
 </p>
 
 <p>
-"The question is... what?"
+You try to rest.
+</p>
+
+`,
+
+[
+
+{
+text:"CHECK CAMERAS",
+action:cameraCheck
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function cameraCheck(){
+
+changeEnergy(-5);
+
+
+setScene(`
+
+<p>
+SECURITY SYSTEM CONNECTED
+</p>
+
+<p>
+CAMERA 01: CLEAR
+</p>
+
+<p>
+CAMERA 02: CLEAR
+</p>
+
+<p>
+CAMERA 03: ONLINE
+</p>
+
+<p>
+The camera feed appears.
+</p>
+
+<p>
+It is showing your hallway.
+</p>
+
+<p>
+You never installed a hallway camera.
+</p>
+
+`,
+
+[
+
+{
+text:"CONTINUE",
+action:nightTwoEnd
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function nightTwoEnd(){
+
+setScene(`
+
+<p>
+You stare at the screen.
+</p>
+
+<p>
+A shadow moves past the camera.
+</p>
+
+<p>
+The feed cuts to black.
+</p>
+
+<p>
+[NIGHT 2 COMPLETE]
+</p>
+
+`,
+
+[
+
+{
+text:"BEGIN NIGHT 3",
+action:nightThree
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+// =====================
+// NIGHT 3 PLACEHOLDER
+// =====================
+
+
+function nightThree(){
+
+setScene(`
+
+<p>
+[NIGHT 3]
+</p>
+
+<p>
+The outside world has been silent for days.
+</p>
+
+<p>
+You decide you cannot stay trapped forever.
+</p>
+
+<p>
+COMING SOON...
 </p>
 
 `,
@@ -512,6 +889,11 @@ action:startMenu
 
 
 
+
+
+// =====================
+// OTHER MENU OPTIONS
+// =====================
 
 
 function continueGame(){
@@ -538,8 +920,7 @@ alert("SETTINGS OFFLINE");
 
 
 
-
-// LOAD MENU
+// START
 
 startMenu();
 

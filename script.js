@@ -1,15 +1,15 @@
 function watchTV() {
-    document.body.innerHTML = "<h1 style='color:white;background:black;text-align:center;'>TV BROADCAST STARTING...</h1>";
+    alert("TV WORKS");
 }
 
 function checkCameras() {
-    document.body.innerHTML = "<h1 style='color:white;background:black;text-align:center;'>CAMERAS ONLINE...</h1>";
+    alert("SECURITY WORKS");
 }
 
 function lookWindow() {
-    document.body.innerHTML = "<h1 style='color:white;background:black;text-align:center;'>YOU LOOK OUTSIDE...</h1>";
+    alert("WINDOW WORKS");
 }
 
 function checkDoor() {
-    document.body.innerHTML = "<h1 style='color:white;background:black;text-align:center;'>DOOR LOCKED</h1>";
+    alert("DOOR WORKS");
 }

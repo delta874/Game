@@ -1,401 +1,81 @@
-let night = 1;
+function startNewGame(){
+
+document.getElementById("menu").innerHTML = `
 
 
-function setScene(text, buttons){
+<div class="header">
 
+SEEKER SECURITY TERMINAL v1.0
 
-document.getElementById("story").innerHTML = text;
-
-
-let choiceBox = document.getElementById("choices");
-
-
-choiceBox.innerHTML = "";
-
-
-buttons.forEach(button => {
-
-
-let btn = document.createElement("button");
-
-
-btn.innerHTML = button.text;
-
-
-btn.onclick = button.action;
-
-
-choiceBox.appendChild(btn);
-
-
-});
-
-
-}
+</div>
 
 
 
-function startGame(){
+<div id="story">
 
-
-setScene(`
 
 <p>
-[EMERGENCY BROADCAST]
+[GAME STARTING]
 </p>
 
 
 <p>
-Reports indicate members of a cult known as
-"The Seekers" have been sighted throughout the county.
+Loading Night 1...
 </p>
 
 
 <p>
-Residents are advised to remain indoors.
+Connection established.
 </p>
 
 
-<p>
-As the broadcast ends, you hear someone picking your door lock.
-</p>
+</div>
 
 
-`,
 
+<div class="system-info">
 
-[
 
-{
-text:"LOCK DOOR",
-action:lockDoor
-},
+DATE: 10/31/1998
 
-
-{
-text:"CHECK CAMERAS",
-action:checkCameras
-}
-
-]
-
-
-);
-
-
-}
-
-
-
-function lockDoor(){
-
-
-setScene(`
-
-
-<p>
-You slam the deadbolt shut.
-</p>
-
-
-<p>
-A gasp comes from the other side.
-</p>
-
-
-<p>
-Footsteps quickly disappear into the night.
-</p>
-
-
-`,
-
-
-[
-
-{
-text:"CHECK CAMERAS",
-action:checkCameras
-},
-
-
-{
-text:"LOOK OUT WINDOW",
-action:windowCheck
-}
-
-]
-
-
-);
-
-
-}
-
-
-
-function checkCameras(){
-
-
-setScene(`
-
-
-<p>
-SECURITY CAMERA FEED CONNECTED.
-</p>
-
-
-<p>
-Camera 03 shows someone standing near your window.
-</p>
-
-
-<p>
-The image glitches.
-</p>
-
-
-`,
-
-
-[
-
-{
-text:"LOCK WINDOW",
-action:lockWindow
-},
-
-
-{
-text:"WATCH CAMERA",
-action:watchCamera
-}
-
-]
-
-
-);
-
-
-}
-
-
-
-function windowCheck(){
-
-
-setScene(`
-
-
-<p>
-You slowly approach the window.
-</p>
-
-
-<p>
-Something moves outside.
-</p>
-
-
-`,
-
-
-[
-
-{
-text:"LOOK OUTSIDE",
-action:badChoice
-},
-
-
-{
-text:"STEP AWAY",
-action:checkCameras
-}
-
-]
-
-
-);
-
-
-}
-
-
-
-function lockWindow(){
-
-
-setScene(`
-
-
-<p>
-You lock the window.
-</p>
-
-
-<p>
-The figure outside disappears.
-</p>
-
-
-`,
-
-
-[
-
-{
-text:"CONTINUE",
-action:nightComplete
-}
-
-]
-
-
-);
-
-
-}
-
-
-
-function watchCamera(){
-
-
-setScene(`
-
-
-<p>
-The camera freezes.
-</p>
-
-
-<p>
-A message appears:
-</p>
-
-
-<p>
-"WE KNOW YOU ARE WATCHING."
-</p>
-
-
-`,
-
-
-[
-
-{
-text:"CONTINUE",
-action:nightComplete
-}
-
-]
-
-
-);
-
-
-}
-
-
-
-function badChoice(){
-
-
-setScene(`
-
-
-<p>
-The window is empty.
-</p>
-
-
-<p>
-But your reflection is smiling.
-</p>
-
-
-`,
-
-
-[
-
-{
-text:"RESTART NIGHT",
-action:startGame
-}
-
-]
-
-
-);
-
-
-}
-
-
-
-function nightComplete(){
-
-
-setScene(`
-
-
-<p>
-NIGHT 1 COMPLETE.
-</p>
-
-
-<p>
-The sun begins to rise.
-</p>
-
-
-`,
-
-
-[
-
-{
-text:"NEXT NIGHT",
-action:nextNight
-}
-
-]
-
-
-);
-
-
-}
-
-
-
-function nextNight(){
-
-
-night++;
-
-
-document.querySelector(".system-info").innerHTML =
-
-`
-DATE: 11/01/1998
 <br>
-TIME: 12:00 AM
+
+TIME: 11:47 PM
+
 <br>
-NIGHT: ${night}
+
+NIGHT: 1
+
+
+</div>
+
+
 `;
 
+}
 
-startGame();
 
+
+function continueGame(){
+
+alert("SAVE DATA NOT FOUND");
 
 }
 
 
 
-startGame();
+function lostHope(){
+
+alert("LOST HOPE MODE LOCKED");
+
+}
+
+
+
+function settings(){
+
+alert("SETTINGS MENU OFFLINE");
+
+}
 
 

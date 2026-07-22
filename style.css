@@ -1,22 +1,32 @@
 body{
 
 margin:0;
+
 height:100vh;
+
 background:#02050b;
 
 display:flex;
+
 justify-content:center;
+
 align-items:center;
 
 font-family:monospace;
 
+overflow:hidden;
+
 }
+
 
 
 .lab{
 
-width:900px;
-height:600px;
+width:95vw;
+
+height:75vh;
+
+max-width:1000px;
 
 background:
 linear-gradient(
@@ -25,16 +35,21 @@ linear-gradient(
 #02040a
 );
 
+
 position:relative;
 
 overflow:hidden;
 
+
 border:5px solid #263b55;
 
+
 box-shadow:
+
 0 0 40px cyan;
 
 }
+
 
 
 /* TITLE */
@@ -44,109 +59,273 @@ box-shadow:
 position:absolute;
 
 top:20px;
+
 left:30px;
 
 font-size:28px;
 
 color:#dffaff;
 
+
 text-shadow:
-0 0 10px cyan;
+
+0 0 15px cyan;
 
 }
 
 
-/* WINDOW */
+
+
+
+/* TV */
 
 .window{
 
 position:absolute;
 
-right:40px;
-top:80px;
+right:5%;
 
-width:300px;
-height:180px;
+top:15%;
+
+
+width:35%;
+
+height:40%;
+
 
 background:#010814;
 
+
 border:4px solid #304861;
 
-color:#00eaff;
-
-display:flex;
-align-items:center;
-justify-content:center;
 
 box-shadow:
-inset 0 0 30px #00eaff;
+
+0 0 25px cyan;
+
+
+padding:10px;
 
 }
 
 
+
+.screen{
+
+height:100%;
+
+background:#020712;
+
+position:relative;
+
+overflow:hidden;
+
+padding:15px;
+
+
+box-shadow:
+
+inset 0 0 30px #00eaff;
+
+
+color:#8bd8ff;
+
+}
+
+
+
+
+
+.channel{
+
+font-size:20px;
+
+color:#00eaff;
+
+
+text-shadow:
+
+0 0 15px cyan;
+
+}
+
+
+
+
+
+.broadcast{
+
+margin-top:25px;
+
+font-size:18px;
+
+color:white;
+
+}
+
+
+
+
+
+.citycam{
+
+margin-top:15px;
+
+color:#7ccfff;
+
+}
+
+
+
+
+
+.stats{
+
+margin-top:20px;
+
+line-height:22px;
+
+}
+
+
+
+
+
+/* TV scan lines */
+
+
+.screen::after{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+
+background:
+
+repeating-linear-gradient(
+
+0deg,
+
+transparent,
+
+transparent 5px,
+
+rgba(0,255,255,.1) 6px
+
+);
+
+
+pointer-events:none;
+
+}
+
+
+
+
 /* RAIN */
+
 
 .rain{
 
 position:absolute;
 
-width:100%;
-height:100%;
+inset:0;
+
 
 background:
+
 linear-gradient(
+
 120deg,
+
 transparent 40%,
+
 cyan 50%,
+
 transparent 60%
+
 );
 
-background-size:50px 50px;
+
+background-size:60px 60px;
+
 
 animation:rain .5s linear infinite;
 
-opacity:.4;
+
+opacity:.35;
 
 }
+
 
 
 @keyframes rain{
 
 from{
+
 background-position:0 0;
+
 }
 
 to{
-background-position:50px 50px;
+
+background-position:60px 60px;
+
 }
 
 }
+
+
+
 
 
 /* TERMINAL */
+
 
 .terminal{
 
 position:absolute;
 
-left:40px;
-top:100px;
+left:5%;
 
-width:280px;
-height:220px;
+top:20%;
+
+
+width:28%;
+
+height:32%;
+
 
 background:#030712;
 
+
 border:3px solid #526b83;
+
 
 padding:20px;
 
+
 color:#8bd8ff;
 
+
 box-shadow:
-0 0 20px #00eaff;
+
+0 0 20px cyan;
 
 }
+
+
+
+.terminal h2{
+
+color:white;
+
+}
+
+
 
 
 span{
@@ -156,43 +335,66 @@ color:#00ffcc;
 }
 
 
-/* WORKBENCH */
+
+
+/* STATIONS */
+
 
 .workbench{
 
 position:absolute;
 
-bottom:50px;
-left:150px;
+bottom:8%;
+
+left:50%;
+
+
+transform:translateX(-50%);
+
 
 display:flex;
-gap:50px;
+
+gap:30px;
 
 }
+
 
 
 .part{
 
+
 width:130px;
+
 height:100px;
+
 
 background:#0b1625;
 
+
 border:3px solid #304861;
 
-color:#dffaff;
 
 display:flex;
-flex-direction:column;
+
 align-items:center;
+
 justify-content:center;
 
+flex-direction:column;
+
+
+color:white;
+
+
 box-shadow:
-inset 0 0 20px #00eaff;
+
+
+inset 0 0 20px cyan;
 
 font-size:30px;
 
 }
+
 
 
 .part p{
@@ -202,34 +404,50 @@ font-size:14px;
 }
 
 
+
+
+
 /* DELTA LOGO */
 
+
 .delta{
+
 
 position:absolute;
 
 bottom:20px;
+
 right:40px;
 
-font-size:50px;
+
+font-size:60px;
+
 
 color:#00eaff;
 
+
 text-shadow:
 
+
 0 0 10px cyan,
-0 0 30px cyan,
-0 0 60px blue;
+
+0 0 40px cyan,
+
+0 0 80px blue;
+
 
 animation:flicker .3s infinite;
 
 }
 
 
+
 @keyframes flicker{
 
 50%{
+
 opacity:.7;
+
 }
 
 }

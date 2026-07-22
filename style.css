@@ -1,25 +1,78 @@
-<div class="room">
+body {
+  margin: 0;
+  background: black;
+  overflow: hidden;
+  font-family: monospace;
+}
 
-  <div class="title">CHANNEL UNKNOWN</div>
+.room {
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle, #222, #000);
+  position: relative;
+  color: white;
+}
 
-  <div class="window" onclick="lookWindow()">
-    WINDOW
-  </div>
+.title {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  text-align: center;
+  color: red;
+  letter-spacing: 5px;
+}
 
-  <div class="tv" onclick="watchTV()">
-    TV
-  </div>
+.tv {
+  position: absolute;
+  right: 15%;
+  top: 35%;
+  width: 180px;
+  height: 120px;
+  background: #050505;
+  border: 4px solid #555;
+  box-shadow: 0 0 20px red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  <div class="computer" onclick="checkCameras()">
-    SECURITY
-  </div>
+.computer {
+  position: absolute;
+  left: 40%;
+  top: 55%;
+  width: 130px;
+  height: 90px;
+  background: #002b20;
+  border: 3px solid green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  <div class="door" onclick="checkDoor()">
-    DOOR
-  </div>
+.window {
+  position: absolute;
+  left: 10%;
+  top: 25%;
+  width: 150px;
+  height: 220px;
+  background: #001020;
+  border: 5px solid #333;
+}
 
-  <div id="message">
-    You are alone in your room...
-  </div>
+.door {
+  position: absolute;
+  right: 5%;
+  top: 25%;
+  width: 90px;
+  height: 250px;
+  background: #321;
+  border: 5px solid #111;
+}
 
-</div>
+#message {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: #aaa;
+}

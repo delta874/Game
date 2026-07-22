@@ -1,17 +1,15 @@
-alert("JavaScript is working!");
-
 function watchTV() {
-    alert("TV clicked!");
+    document.body.innerHTML = "<h1 style='color:white;background:black;text-align:center;'>TV BROADCAST STARTING...</h1>";
 }
 
 function checkCameras() {
-    alert("Security clicked!");
+    document.body.innerHTML = "<h1 style='color:white;background:black;text-align:center;'>CAMERAS ONLINE...</h1>";
 }
 
 function lookWindow() {
-    alert("Window clicked!");
+    document.body.innerHTML = "<h1 style='color:white;background:black;text-align:center;'>YOU LOOK OUTSIDE...</h1>";
 }
 
 function checkDoor() {
-    alert("Door clicked!");
+    document.body.innerHTML = "<h1 style='color:white;background:black;text-align:center;'>DOOR LOCKED</h1>";
 }

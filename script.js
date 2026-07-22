@@ -1,15 +1,31 @@
-function watchTV() {
-    alert("TV WORKS");
+function showMessage(text) {
+    document.getElementById("message").innerHTML = text;
 }
+
+
+function watchTV() {
+    showMessage(
+    "EMERGENCY BROADCAST: The Seekers have been reported in your area. Stay indoors."
+    );
+}
+
 
 function checkCameras() {
-    alert("SECURITY WORKS");
+    showMessage(
+    "SECURITY ONLINE... Camera feeds loading..."
+    );
 }
+
 
 function lookWindow() {
-    alert("WINDOW WORKS");
+    showMessage(
+    "You look outside. The street is quiet..."
+    );
 }
 
+
 function checkDoor() {
-    alert("DOOR WORKS");
+    showMessage(
+    "Door locked. You hear nothing outside."
+    );
 }

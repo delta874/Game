@@ -2294,6 +2294,429 @@ The final night has arrived.
 [
 
 {
+text:"BEGIN NIGHT 7",
+action:nightSeven
+}
+
+]
+
+);
+
+}
+// =====================
+// NIGHT 7 - THE LAST NIGHT
+// =====================
+
+
+function nightSeven(){
+
+night = 7;
+
+
+setScene(`
+
+<p>
+[NIGHT 7]
+</p>
+
+<p>
+The power is gone.
+</p>
+
+<p>
+The house is completely dark.
+</p>
+
+<p>
+You hear movement outside.
+</p>
+
+<p>
+You know they are here.
+</p>
+
+<p>
+Tonight decides everything.
+</p>
+
+`,
+
+[
+
+{
+text:"CHECK CAMERAS",
+action:finalCameras
+},
+
+{
+text:"HIDE AND WAIT",
+action:hideFinal
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function finalCameras(){
+
+changeEnergy(-10);
+
+changeAwareness(10);
+
+changeSanity(-5);
+
+
+setScene(`
+
+<p>
+You turn on the backup monitor.
+</p>
+
+<p>
+The cameras flicker.
+</p>
+
+<p>
+Camera 01:
+EMPTY.
+</p>
+
+<p>
+Camera 02:
+EMPTY.
+</p>
+
+<p>
+Camera 03:
+</p>
+
+<p>
+A figure is standing at your door.
+</p>
+
+`,
+
+[
+
+{
+text:"PREPARE DEFENSES",
+action:prepareDefense
+},
+
+{
+text:"TURN OFF MONITOR",
+action:turnOffFinalMonitor
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function hideFinal(){
+
+changeEnergy(10);
+
+changeSanity(5);
+
+changeAwareness(-5);
+
+
+setScene(`
+
+<p>
+You hide in the darkness.
+</p>
+
+<p>
+You hear footsteps.
+</p>
+
+<p>
+Slowly moving through the house.
+</p>
+
+<p>
+You hold your breath.
+</p>
+
+`,
+
+[
+
+{
+text:"WAIT",
+action:finalWait
+},
+
+{
+text:"RUN",
+action:runFinal
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function prepareDefense(){
+
+changeEnergy(-15);
+
+changeAwareness(-10);
+
+
+setScene(`
+
+<p>
+You prepare everything you can.
+</p>
+
+<p>
+The doors are secured.
+</p>
+
+<p>
+The house is ready.
+</p>
+
+<p>
+Now you wait.
+</p>
+
+`,
+
+[
+
+{
+text:"FACE THEM",
+action:endingCheck
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function turnOffFinalMonitor(){
+
+changeSanity(5);
+
+
+setScene(`
+
+<p>
+You turn off the monitor.
+</p>
+
+<p>
+You don't want to see them anymore.
+</p>
+
+<p>
+The silence is worse.
+</p>
+
+`,
+
+[
+
+{
+text:"WAIT",
+action:finalWait
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function finalWait(){
+
+changeEnergy(-10);
+
+
+setScene(`
+
+<p>
+Hours pass.
+</p>
+
+<p>
+The house creaks.
+</p>
+
+<p>
+A door opens somewhere downstairs.
+</p>
+
+<p>
+You realize...
+</p>
+
+<p>
+You can't hide forever.
+</p>
+
+`,
+
+[
+
+{
+text:"FACE THEM",
+action:endingCheck
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function runFinal(){
+
+changeEnergy(-20);
+
+changeSanity(-10);
+
+
+setScene(`
+
+<p>
+You move through the darkness.
+</p>
+
+<p>
+Every sound feels closer.
+</p>
+
+<p>
+You don't know if you are escaping...
+</p>
+
+<p>
+or walking toward them.
+</p>
+
+`,
+
+[
+
+{
+text:"CONTINUE",
+action:endingCheck
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+// =====================
+// ENDING SYSTEM
+// =====================
+
+
+function endingCheck(){
+
+
+if(sanity < 40){
+
+badDreamEnding();
+
+}
+
+else if(energy < 20 || seekerActivity > 80){
+
+badEnding();
+
+}
+
+else{
+
+goodEnding();
+
+}
+
+
+}
+
+
+
+
+
+function badDreamEnding(){
+
+setScene(`
+
+<p>
+ENDING: LOST IN THE NIGHT
+</p>
+
+<p>
+The fear becomes too much.
+</p>
+
+<p>
+The world around you fades.
+</p>
+
+<p>
+You wake up somewhere unfamiliar.
+</p>
+
+<p>
+A hospital room.
+</p>
+
+<p>
+The truth slowly returns.
+</p>
+
+<p>
+Was it real?
+</p>
+
+`,
+
+[
+
+{
 text:"RETURN TO MENU",
 action:startMenu
 }
@@ -2304,6 +2727,95 @@ action:startMenu
 
 }
 
+
+
+
+
+function badEnding(){
+
+setScene(`
+
+<p>
+ENDING: THE SEEKERS FOUND YOU
+</p>
+
+<p>
+You fought until the end.
+</p>
+
+<p>
+But you were not prepared.
+</p>
+
+<p>
+The house becomes silent.
+</p>
+
+<p>
+The Seekers remain.
+</p>
+
+`,
+
+[
+
+{
+text:"RETURN TO MENU",
+action:startMenu
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function goodEnding(){
+
+setScene(`
+
+<p>
+ENDING: SURVIVOR
+</p>
+
+<p>
+The sun rises.
+</p>
+
+<p>
+The house is damaged...
+</p>
+
+<p>
+but you are still standing.
+</p>
+
+<p>
+You finally understand The Seekers.
+</p>
+
+<p>
+And now you know how to stop them.
+</p>
+
+`,
+
+[
+
+{
+text:"RETURN TO MENU",
+action:startMenu
+}
+
+]
+
+);
+
+}
 
 // START GAME
 

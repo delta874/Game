@@ -1258,9 +1258,9 @@ action:nightFour
 // =====================
 
 
-function nightFour(){
+function nightFour){{
 
-night = 4;
+night  4;
 
 
 setScene(`
@@ -1444,6 +1444,285 @@ action:nightFive
 }
 
 
+// =====================
+// NIGHT 4 - THE ATTIC
+// =====================
+
+
+function nightFour(){
+
+night = 4;
+
+
+setScene(`
+
+<p>
+[NIGHT 4]
+</p>
+
+<p>
+You can't keep waiting anymore.
+</p>
+
+<p>
+The Seekers know something about you.
+</p>
+
+<p>
+You need answers.
+</p>
+
+<p>
+You decide to search the house.
+</p>
+
+`,
+
+[
+
+{
+text:"SEARCH ATTIC",
+action:searchAttic
+},
+
+{
+text:"REST",
+action:restNightFour
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function searchAttic(){
+
+changeEnergy(-10);
+
+changeSanity(-5);
+
+changeAwareness(10);
+
+
+setScene(`
+
+<p>
+You climb into the attic.
+</p>
+
+<p>
+Dust covers everything.
+</p>
+
+<p>
+Old boxes, forgotten belongings,
+and family photos fill the room.
+</p>
+
+<p>
+Something catches your eye.
+</p>
+
+<p>
+A small locked box hidden behind an old picture frame.
+</p>
+
+`,
+
+[
+
+{
+text:"OPEN BOX",
+action:openBox
+},
+
+{
+text:"LEAVE IT",
+action:leaveBox
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function restNightFour(){
+
+changeEnergy(20);
+
+changeSanity(5);
+
+changeAwareness(-5);
+
+
+setScene(`
+
+<p>
+You decide to rest instead.
+</p>
+
+<p>
+For the first time in days,
+the house feels quiet.
+</p>
+
+<p>
+You almost forget about The Seekers.
+</p>
+
+<p>
+Almost.
+</p>
+
+`,
+
+[
+
+{
+text:"CONTINUE",
+action:nightFive
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function openBox(){
+
+changeSanity(-10);
+
+changeAwareness(10);
+
+
+setScene(`
+
+<p>
+You slowly open the box.
+</p>
+
+<p>
+Inside are old newspaper clippings,
+photographs, and handwritten notes.
+</p>
+
+<p>
+The articles are about disappearances,
+strange sightings, and people reporting
+the same symbol.
+</p>
+
+<p>
+One note stands out:
+</p>
+
+<p>
+"THE SEEKERS DO NOT HUNT RANDOMLY.
+THEY WATCH THOSE WHO NOTICE THEM."
+</p>
+
+<p>
+You realize something disturbing.
+</p>
+
+<p>
+Every time you searched for them...
+they may have been searching for you too.
+</p>
+
+`,
+
+[
+
+{
+text:"READ MORE NOTES",
+action:readNotes
+},
+
+{
+text:"CLOSE BOX",
+action:leaveBox
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function readNotes(){
+
+changeSanity(-5);
+
+changeAwareness(5);
+
+
+setScene(`
+
+<p>
+The notes are decades old.
+</p>
+
+<p>
+Different towns.
+Different houses.
+Same symbol.
+Same group.
+</p>
+
+<p>
+A final message is written at the bottom:
+</p>
+
+<p>
+"They are not looking for a place.
+They are looking for a person."
+</p>
+
+<p>
+You hear a noise downstairs.
+</p>
+
+`,
+
+[
+
+{
+text:"GO CHECK",
+action:checkDownstairs
+},
+
+{
+text:"STAY QUIET",
+action:stayQuiet
+}
+
+]
+
+);
+
+}
+
+
 
 
 
@@ -1462,6 +1741,96 @@ You close the box.
 
 <p>
 Some answers might be better left hidden.
+</p>
+
+<p>
+You leave the attic.
+</p>
+
+`,
+
+[
+
+{
+text:"CONTINUE",
+action:nightFive
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function checkDownstairs(){
+
+changeEnergy(-5);
+
+changeAwareness(10);
+
+
+setScene(`
+
+<p>
+You slowly walk downstairs.
+</p>
+
+<p>
+Nobody is there.
+</p>
+
+<p>
+But the front door is open.
+</p>
+
+<p>
+You are certain you locked it.
+</p>
+
+`,
+
+[
+
+{
+text:"LOCK DOOR",
+action:nightFive
+
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function stayQuiet(){
+
+changeSanity(5);
+
+changeAwareness(-5);
+
+
+setScene(`
+
+<p>
+You stay completely still.
+</p>
+
+<p>
+After a few minutes,
+the noise stops.
+</p>
+
+<p>
+You decide not to investigate.
 </p>
 
 `,

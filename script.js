@@ -5,27 +5,27 @@ function showMessage(text) {
 
 function watchTV() {
     showMessage(
-    "EMERGENCY BROADCAST: The Seekers have been reported in your area. Stay indoors."
+    "EMERGENCY BROADCAST: The Seekers have been reported nearby. Stay indoors and lock all doors."
     );
 }
 
 
 function checkCameras() {
     showMessage(
-    "SECURITY ONLINE... Camera feeds loading..."
+    "SECURITY SYSTEM ONLINE... Searching camera feeds..."
     );
 }
 
 
 function lookWindow() {
     showMessage(
-    "You look outside. The street is quiet..."
+    "You look outside. The street is empty. Something feels wrong..."
     );
 }
 
 
 function checkDoor() {
     showMessage(
-    "Door locked. You hear nothing outside."
+    "Door locked. You hear a strange noise outside."
     );
 }

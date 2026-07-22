@@ -612,3 +612,6 @@ action:startGame
 
 
 
+updateMeters();
+startGame();
+

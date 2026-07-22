@@ -1753,11 +1753,8 @@ action:nightFive
 }
 
 
-
-
-
 // =====================
-// NIGHT 5 PLACEHOLDER
+// NIGHT 5 - THE TRUTH
 // =====================
 
 
@@ -1773,19 +1770,523 @@ setScene(`
 </p>
 
 <p>
-The information you found changes everything.
+You spend the night going through the files from the attic.
 </p>
 
 <p>
-The Seekers are not just nearby...
+The more you read...
+the worse it gets.
 </p>
 
 <p>
-They have been watching for years.
+The Seekers have existed for decades.
 </p>
 
 <p>
-NIGHT 5 COMING SOON...
+Different towns.
+Different people.
+Same symbol.
+</p>
+
+<p>
+But one question remains...
+</p>
+
+<p>
+Did you discover them?
+Or did they want you to find them?
+</p>
+
+`,
+
+[
+
+{
+text:"INVESTIGATE FILES",
+action:investigateFiles
+},
+
+{
+text:"HIDE THE FILES",
+action:hideFiles
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function investigateFiles(){
+
+changeSanity(-10);
+
+changeEnergy(-10);
+
+changeAwareness(15);
+
+
+setScene(`
+
+<p>
+You continue reading the documents.
+</p>
+
+<p>
+You find a missing person report.
+</p>
+
+<p>
+The person reported seeing the same symbol
+before disappearing.
+</p>
+
+<p>
+The last note says:
+</p>
+
+<p>
+"They do not chase everyone.
+Only those who notice."
+</p>
+
+`,
+
+[
+
+{
+text:"CHECK SECURITY CAMERA",
+action:nightFiveCamera
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function hideFiles(){
+
+changeSanity(5);
+
+changeEnergy(10);
+
+changeAwareness(-5);
+
+
+setScene(`
+
+<p>
+You close the box.
+</p>
+
+<p>
+Some things are better left unknown.
+</p>
+
+<p>
+You try to get some rest.
+</p>
+
+<p>
+But you still feel watched.
+</p>
+
+`,
+
+[
+
+{
+text:"CHECK SECURITY CAMERA",
+action:nightFiveCamera
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function nightFiveCamera(){
+
+changeEnergy(-5);
+
+changeAwareness(10);
+
+
+setScene(`
+
+<p>
+The security monitor turns on.
+</p>
+
+<p>
+CAMERA 01: CLEAR
+</p>
+
+<p>
+CAMERA 02: CLEAR
+</p>
+
+<p>
+CAMERA 03: ACTIVE
+</p>
+
+<p>
+Someone is standing outside.
+</p>
+
+<p>
+They haven't moved.
+</p>
+
+`,
+
+[
+
+{
+text:"WATCH LONGER",
+action:watchLonger
+},
+
+{
+text:"TURN OFF MONITOR",
+action:turnOffMonitor
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function watchLonger(){
+
+changeSanity(-10);
+
+changeAwareness(10);
+
+
+setScene(`
+
+<p>
+You keep watching.
+</p>
+
+<p>
+Minutes pass.
+</p>
+
+<p>
+The person never moves.
+</p>
+
+<p>
+Then they slowly turn toward the camera.
+</p>
+
+<p>
+The screen goes black.
+</p>
+
+`,
+
+[
+
+{
+text:"CONTINUE",
+action:nightSix
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function turnOffMonitor(){
+
+changeSanity(5);
+
+changeAwareness(-5);
+
+
+setScene(`
+
+<p>
+You turn off the monitor.
+</p>
+
+<p>
+You don't want to know what was outside.
+</p>
+
+<p>
+But tomorrow night is coming.
+</p>
+
+`,
+
+[
+
+{
+text:"CONTINUE",
+action:nightSix
+}
+
+]
+
+);
+
+}
+
+// =====================
+// NIGHT 6 - THE SIEGE
+// =====================
+
+
+function nightSix(){
+
+night = 6;
+
+
+setScene(`
+
+<p>
+[NIGHT 6]
+</p>
+
+<p>
+You know something is coming.
+</p>
+
+<p>
+The house no longer feels like a home.
+</p>
+
+<p>
+It feels like a battlefield.
+</p>
+
+<p>
+You prepare for the final night.
+</p>
+
+`,
+
+[
+
+{
+text:"SET TRAPS",
+action:setTraps
+},
+
+{
+text:"REST",
+action:restBeforeFinal
+},
+
+{
+text:"WATCH CAMERAS",
+action:watchNightSixCameras
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function setTraps(){
+
+changeEnergy(-20);
+
+changeAwareness(-10);
+
+
+setScene(`
+
+<p>
+You prepare the house.
+</p>
+
+<p>
+You block entrances and create defenses.
+</p>
+
+<p>
+It takes hours.
+</p>
+
+<p>
+You feel exhausted.
+</p>
+
+<p>
+But you are ready.
+</p>
+
+`,
+
+[
+
+{
+text:"CONTINUE",
+action:nightSixEnd
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function restBeforeFinal(){
+
+changeEnergy(20);
+
+changeSanity(5);
+
+
+setScene(`
+
+<p>
+You decide to rest.
+</p>
+
+<p>
+You need your strength.
+</p>
+
+<p>
+The silence almost feels peaceful.
+</p>
+
+<p>
+Almost.
+</p>
+
+`,
+
+[
+
+{
+text:"CONTINUE",
+action:nightSixEnd
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function watchNightSixCameras(){
+
+changeEnergy(-10);
+
+changeAwareness(15);
+
+
+setScene(`
+
+<p>
+You watch the cameras.
+</p>
+
+<p>
+Every camera is normal.
+</p>
+
+<p>
+Until suddenly...
+</p>
+
+<p>
+Every screen shows the same image.
+</p>
+
+<p>
+Your house.
+</p>
+
+<p>
+From outside.
+</p>
+
+`,
+
+[
+
+{
+text:"CONTINUE",
+action:nightSixEnd
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function nightSixEnd(){
+
+setScene(`
+
+<p>
+[NIGHT 6 COMPLETE]
+</p>
+
+<p>
+The power suddenly goes out.
+</p>
+
+<p>
+The security monitors turn on.
+</p>
+
+<p>
+The final night has arrived.
+</p>
+
+<p>
+[NIGHT 7 COMING SOON]
 </p>
 
 `,
@@ -1802,6 +2303,7 @@ action:startMenu
 );
 
 }
+
 
 // START GAME
 

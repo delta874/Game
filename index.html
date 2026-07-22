@@ -1,70 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Delta's Workshop</title>
+    <title>Delta Cybernetics Lab</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="top-row">
+<div class="lab">
 
-    <div class="order-panel">
-        <h2>Current Order</h2>
-        <p id="orderName"></p>
-
-        <h3>Needed Parts</h3>
-        <ul id="recipe"></ul>
+    <div class="title">
+        DELTA CYBERNETICS LAB
     </div>
 
-    <div class="money-panel">
-        💰 $<span id="money">0</span>
+
+    <div class="window">
+        <div class="rain"></div>
+        NIGHT CITY NETWORK
     </div>
 
-</div>
+
+    <div class="terminal">
+        <h2>DELTA CORE</h2>
+
+        <p>POWER: <span>ONLINE</span></p>
+        <p>MEMORY: <span>ACTIVE</span></p>
+        <p>SYSTEMS: <span>READY</span></p>
+
+    </div>
 
 
-<div class="delta-panel">
+    <div class="workbench">
 
-    <div class="delta-orb">◉</div>
+        <div class="part">
+            🦾
+            <p>ARM BAY</p>
+        </div>
 
-    <h2>DELTA</h2>
+        <div class="part">
+            🧠
+            <p>AI CORE</p>
+        </div>
 
-    <p id="delta">
-        Assembly request received.
-    </p>
+        <div class="part">
+            ⚡
+            <p>POWER</p>
+        </div>
 
-</div>
-
-
-<div class="resource-panel">
-
-    <h2>WORKBENCH</h2>
-
-    <button onclick="selectPart('Lens')">Lens</button>
-
-    <button onclick="selectPart('Processor')">Processor</button>
-
-    <button onclick="selectPart('Power Cell')">Power Cell</button>
-
-    <button onclick="selectPart('Memory Chip')">Memory Chip</button>
-
-    <button onclick="selectPart('Battery')">Battery</button>
-
-    <button onclick="selectPart('Gyroscope')">Gyroscope</button>
-
-</div>
+    </div>
 
 
-<h3>Selected Parts</h3>
+    <div class="delta">
+        DELTA
+    </div>
 
-<ul id="selected"></ul>
-
-
-<div class="action-panel">
-
-    <button onclick="build()">BUILD</button>
-
-    <button onclick="nextOrder()">NEXT ORDER</button>
 
 </div>
 

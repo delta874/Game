@@ -1,185 +1,235 @@
 body{
 
-    background:#080812;
+margin:0;
+height:100vh;
+background:#02050b;
 
-    color:#e8ffff;
+display:flex;
+justify-content:center;
+align-items:center;
 
-    font-family:monospace;
-
-    margin:20px;
-
-}
-
-
-
-/* Top area */
-
-.top-row{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:flex-start;
+font-family:monospace;
 
 }
 
 
+.lab{
 
-.order-panel{
+width:900px;
+height:600px;
 
-    width:250px;
+background:
+linear-gradient(
+180deg,
+#071322,
+#02040a
+);
 
-    border:2px solid cyan;
+position:relative;
 
-    padding:15px;
+overflow:hidden;
 
-    border-radius:10px;
+border:5px solid #263b55;
 
-    box-shadow:0 0 15px cyan;
-
-}
-
-
-
-.money-panel{
-
-    font-size:28px;
-
-    color:#00ff88;
-
-    text-shadow:0 0 10px #00ff88;
+box-shadow:
+0 0 40px cyan;
 
 }
 
 
+/* TITLE */
 
-/* Delta */
+.title{
 
-.delta-panel{
+position:absolute;
 
-    text-align:center;
+top:20px;
+left:30px;
 
-    margin-top:40px;
+font-size:28px;
 
-    margin-bottom:40px;
+color:#dffaff;
 
-}
-
-
-
-.delta-orb{
-
-    font-size:70px;
-
-    color:cyan;
-
-    animation:float 3s infinite ease-in-out;
-
-    text-shadow:
-
-    0 0 10px cyan,
-    0 0 30px cyan,
-    0 0 50px cyan;
+text-shadow:
+0 0 10px cyan;
 
 }
 
 
+/* WINDOW */
 
-@keyframes float{
+.window{
 
-    0%{
+position:absolute;
 
-        transform:translateY(0);
+right:40px;
+top:80px;
 
-    }
+width:300px;
+height:180px;
 
-    50%{
+background:#010814;
 
-        transform:translateY(-15px);
+border:4px solid #304861;
 
-    }
+color:#00eaff;
 
-    100%{
+display:flex;
+align-items:center;
+justify-content:center;
 
-        transform:translateY(0);
-
-    }
-
-}
-
-
-
-/* Workbench */
-
-.resource-panel{
-
-    border:2px solid cyan;
-
-    padding:20px;
-
-    border-radius:10px;
-
-    box-shadow:0 0 15px cyan;
-
-    text-align:center;
+box-shadow:
+inset 0 0 30px #00eaff;
 
 }
 
 
+/* RAIN */
 
-button{
+.rain{
 
-    background:#111;
+position:absolute;
 
-    color:cyan;
+width:100%;
+height:100%;
 
-    border:1px solid cyan;
+background:
+linear-gradient(
+120deg,
+transparent 40%,
+cyan 50%,
+transparent 60%
+);
 
-    padding:10px 15px;
+background-size:50px 50px;
 
-    margin:5px;
+animation:rain .5s linear infinite;
 
-    border-radius:8px;
-
-    cursor:pointer;
-
-}
-
-
-
-button:hover{
-
-    background:cyan;
-
-    color:black;
+opacity:.4;
 
 }
 
 
+@keyframes rain{
 
-.action-panel{
+from{
+background-position:0 0;
+}
 
-    text-align:center;
-
-    margin-top:20px;
+to{
+background-position:50px 50px;
+}
 
 }
 
 
+/* TERMINAL */
 
-ul{
+.terminal{
 
-    padding:0;
+position:absolute;
+
+left:40px;
+top:100px;
+
+width:280px;
+height:220px;
+
+background:#030712;
+
+border:3px solid #526b83;
+
+padding:20px;
+
+color:#8bd8ff;
+
+box-shadow:
+0 0 20px #00eaff;
 
 }
 
 
+span{
 
-li{
+color:#00ffcc;
 
-    list-style:none;
+}
 
-    margin:5px;
+
+/* WORKBENCH */
+
+.workbench{
+
+position:absolute;
+
+bottom:50px;
+left:150px;
+
+display:flex;
+gap:50px;
+
+}
+
+
+.part{
+
+width:130px;
+height:100px;
+
+background:#0b1625;
+
+border:3px solid #304861;
+
+color:#dffaff;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+
+box-shadow:
+inset 0 0 20px #00eaff;
+
+font-size:30px;
+
+}
+
+
+.part p{
+
+font-size:14px;
+
+}
+
+
+/* DELTA LOGO */
+
+.delta{
+
+position:absolute;
+
+bottom:20px;
+right:40px;
+
+font-size:50px;
+
+color:#00eaff;
+
+text-shadow:
+
+0 0 10px cyan,
+0 0 30px cyan,
+0 0 60px blue;
+
+animation:flicker .3s infinite;
+
+}
+
+
+@keyframes flicker{
+
+50%{
+opacity:.7;
+}
 
 }

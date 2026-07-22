@@ -217,9 +217,6 @@ alert("SETTINGS OFFLINE");
 
 
 
-// Start game menu
-
-startMenu();
 
 // =====================
 // NIGHT 1
@@ -1805,3 +1802,7 @@ action:startMenu
 );
 
 }
+
+// START GAME
+
+startMenu();

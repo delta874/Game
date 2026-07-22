@@ -1,188 +1,221 @@
 body {
-    margin: 0;
-    padding: 0;
-    background: black;
-    color: red;
-    font-family: "Courier New", monospace;
-    height: 100vh;
-    overflow: hidden;
-}
 
+    margin:0;
 
-/* Main computer terminal */
+    padding:0;
 
-.terminal {
-    width: 85%;
-    max-width: 900px;
-    height: 80vh;
+    background:black;
 
-    margin: 5vh auto;
+    color:red;
 
-    background: black;
+    font-family:"Courier New", monospace;
 
-    border: 3px solid red;
+    height:100vh;
 
-    box-shadow:
-        0 0 10px red,
-        0 0 25px red;
-
-    padding: 25px;
-
-    display: flex;
-    flex-direction: column;
-}
-
-
-/* Top computer label */
-
-.header {
-
-    color: white;
-
-    font-size: 22px;
-
-    letter-spacing: 4px;
-
-    border-bottom: 2px solid red;
-
-    padding-bottom: 15px;
-
-    margin-bottom: 20px;
-
-    text-align: center;
+    overflow:hidden;
 
 }
 
 
-/* Story text */
+/* CRT screen */
 
-#story {
+body::before {
 
-    color: red;
+    content:"";
 
-    font-size: 18px;
+    position:fixed;
 
-    line-height: 1.8;
+    top:0;
+    left:0;
 
-    flex: 1;
-
-    text-shadow:
-        0 0 5px red;
-
-}
-
-
-/* Choice buttons area */
-
-.choices {
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 20px;
-
-}
-
-
-/* Buttons */
-
-button {
-
-    background: black;
-
-    color: white;
-
-    border: 2px solid white;
-
-    padding: 15px 25px;
-
-    font-family: "Courier New", monospace;
-
-    font-size: 16px;
-
-    cursor: pointer;
-
-}
-
-
-/* Button hover */
-
-button:hover {
-
-    background: white;
-
-    color: black;
-
-}
-
-
-/* Tap effect for tablets */
-
-button:active {
-
-    transform: scale(0.95);
-
-}
-
-
-/* Fake CRT scan lines */
-
-.terminal::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-
-    top: 0;
-
-    width: 100%;
-
-    height: 100%;
-
-    pointer-events: none;
+    width:100%;
+    height:100%;
 
     background:
     repeating-linear-gradient(
         0deg,
-        rgba(255,0,0,0.05),
-        rgba(255,0,0,0.05) 1px,
-        transparent 2px,
-        transparent 4px
+        rgba(255,255,255,0.08),
+        rgba(255,255,255,0.08) 2px,
+        transparent 3px,
+        transparent 5px
     );
+
+    pointer-events:none;
 
 }
 
 
-/* Mobile/tablet adjustment */
+
+/* Computer terminal */
+
+.terminal {
+
+    width:85%;
+
+    max-width:900px;
+
+    height:80vh;
+
+    margin:5vh auto;
+
+    background:black;
+
+    border:3px solid red;
+
+    box-shadow:
+    0 0 10px red,
+    0 0 25px red;
+
+    padding:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+
+/* Header */
+
+.header {
+
+    color:white;
+
+    text-align:center;
+
+    font-size:22px;
+
+    letter-spacing:4px;
+
+    border-bottom:2px solid red;
+
+    padding-bottom:15px;
+
+}
+
+
+
+/* Story */
+
+#story {
+
+    color:red;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    flex:1;
+
+    margin-top:20px;
+
+    text-shadow:
+    0 0 8px red;
+
+}
+
+
+
+/* Buttons */
+
+.choices {
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+}
+
+
+
+button {
+
+    background:black;
+
+    color:white;
+
+    border:2px solid white;
+
+    padding:15px 25px;
+
+    font-family:"Courier New", monospace;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}
+
+
+
+button:hover {
+
+    background:white;
+
+    color:black;
+
+}
+
+
+
+button:active {
+
+    transform:scale(.95);
+
+}
+
+
+
+/* Bottom computer info */
+
+.system-info {
+
+    color:white;
+
+    border-top:1px solid red;
+
+    margin-top:20px;
+
+    padding-top:10px;
+
+    text-align:right;
+
+    font-size:14px;
+
+}
+
+
+
+/* Tablet support */
 
 @media(max-width:700px){
 
-    .terminal {
+    .terminal{
 
-        width: 85%;
+        width:85%;
 
-        height: 75vh;
+        height:75vh;
 
-        padding: 15px;
-
-    }
-
-
-    #story {
-
-        font-size: 15px;
+        padding:15px;
 
     }
 
 
-    button {
+    #story{
 
-        padding: 12px;
+        font-size:15px;
 
-        font-size: 14px;
+    }
+
+
+    button{
+
+        padding:12px;
+
+        font-size:14px;
 
     }
 

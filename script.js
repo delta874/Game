@@ -1,31 +1,67 @@
-function showMessage(text) {
-    document.getElementById("message").innerHTML = text;
+function lockDoor(){
+
+document.getElementById("story").innerHTML = `
+
+<p>[ACTION LOG]</p>
+
+<p>
+You throw the deadbolt into place.
+</p>
+
+<p>
+CLICK.
+</p>
+
+<p>
+The sound outside stops instantly.
+</p>
+
+<p>
+A sharp gasp comes from the other side
+of the door.
+</p>
+
+<p>
+Then rapid footsteps retreat into the night.
+</p>
+
+<p>
+For now, you are safe.
+</p>
+
+`;
+
 }
 
 
-function watchTV() {
-    showMessage(
-    "EMERGENCY BROADCAST: The Seekers have been reported nearby. Stay indoors and lock all doors."
-    );
-}
+function checkCameras(){
 
+document.getElementById("story").innerHTML = `
 
-function checkCameras() {
-    showMessage(
-    "SECURITY SYSTEM ONLINE... Searching camera feeds..."
-    );
-}
+<p>[CAMERA FEED]</p>
 
+<p>
+You rush to the security monitor.
+</p>
 
-function lookWindow() {
-    showMessage(
-    "You look outside. The street is empty. Something feels wrong..."
-    );
-}
+<p>
+Camera 03 shows a figure standing
+outside your window.
+</p>
 
+<p>
+The figure appears to be watching you.
+</p>
 
-function checkDoor() {
-    showMessage(
-    "Door locked. You hear a strange noise outside."
-    );
+<p>
+Suddenly the feed glitches.
+</p>
+
+<p>
+When the image returns,
+the figure is gone.
+</p>
+
+`;
+
 }

@@ -1,44 +1,4 @@
 body{
-    margin:0;
     background:black;
-    font-family:Courier New, monospace;
-}
-
-.terminal{
-    width:90%;
-    max-width:900px;
-    margin:40px auto;
-    border:2px solid red;
-    padding:20px;
-    box-shadow:0 0 20px red;
-}
-
-.header{
-    color:white;
-    border-bottom:1px solid red;
-    padding-bottom:10px;
-    margin-bottom:20px;
-    letter-spacing:3px;
-}
-
-#story{
     color:red;
-    line-height:1.8;
-    min-height:250px;
-    text-shadow:0 0 8px red;
-}
-
-button{
-    background:black;
-    color:white;
-    border:1px solid white;
-    padding:12px 20px;
-    margin-right:10px;
-    cursor:pointer;
-    font-family:inherit;
-}
-
-button:hover{
-    background:white;
-    color:black;
 }

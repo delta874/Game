@@ -10,22 +10,23 @@ function updateMeters(){
 
     document.getElementById("sanity").innerHTML =
     "█".repeat(Math.floor(sanity/10)) +
-    "░".repeat(10-Math.floor(sanity/10)) +
+    "░".repeat(10 - Math.floor(sanity/10)) +
     " " + sanity + "%";
 
 
     document.getElementById("energy").innerHTML =
     "█".repeat(Math.floor(energy/10)) +
-    "░".repeat(10-Math.floor(energy/10)) +
+    "░".repeat(10 - Math.floor(energy/10)) +
     " " + energy + "%";
 
 
     document.getElementById("seekers").innerHTML =
     "█".repeat(Math.floor(seekerActivity/10)) +
-    "░".repeat(10-Math.floor(seekerActivity/10)) +
+    "░".repeat(10 - Math.floor(seekerActivity/10)) +
     " " + seekerActivity + "%";
 
 }
+
 
 
 
@@ -42,6 +43,7 @@ function changeSanity(amount){
 
 
 
+
 function changeEnergy(amount){
 
     energy += amount;
@@ -55,6 +57,7 @@ function changeEnergy(amount){
 
 
 
+
 function setScene(text, buttons){
 
     document.getElementById("story").innerHTML = text;
@@ -65,15 +68,15 @@ function setScene(text, buttons){
     box.innerHTML = "";
 
 
-    buttons.forEach(choice=>{
+    buttons.forEach(choice => {
 
-        let btn = document.createElement("button");
+        let button = document.createElement("button");
 
-        btn.innerHTML = choice.text;
+        button.innerHTML = choice.text;
 
-        btn.onclick = choice.action;
+        button.onclick = choice.action;
 
-        box.appendChild(btn);
+        box.appendChild(button);
 
     });
 
@@ -82,26 +85,78 @@ function setScene(text, buttons){
 
 
 
-function startGame(){
 
-    night = 1;
-    sanity = 100;
-    energy = 100;
-    seekerActivity = 20;
+// MAIN MENU
 
-    updateMeters();
+function startMenu(){
 
-    nightOne();
+setScene(`
+
+<p>
+WELCOME TO THE SEEKER SECURITY TERMINAL
+</p>
+
+<p>
+SYSTEM READY.
+</p>
+
+`,
+
+[
+
+{
+text:"START NEW GAME",
+action:startGame
+},
+
+{
+text:"CONTINUE",
+action:continueGame
+},
+
+{
+text:"LOST HOPE",
+action:lostHope
+},
+
+{
+text:"SETTINGS",
+action:settings
+}
+
+]
+
+);
 
 }
 
 
 
 
-// =====================
-// NIGHT 1
-// =====================
 
+
+function startGame(){
+
+night = 1;
+
+sanity = 100;
+
+energy = 100;
+
+seekerActivity = 20;
+
+
+updateMeters();
+
+
+nightOne();
+
+}
+
+
+
+
+// NIGHT 1
 
 function nightOne(){
 
@@ -158,11 +213,7 @@ changeSanity(-2);
 setScene(`
 
 <p>
-You pick up your phone.
-</p>
-
-<p>
-Two unread messages.
+You check your phone.
 </p>
 
 <p>
@@ -173,10 +224,6 @@ MOM:
 <p>
 DAD:
 "Remember to lock the back door."
-</p>
-
-<p>
-You look toward the hallway.
 </p>
 
 `,
@@ -218,21 +265,12 @@ The coffee machine turns on.
 </p>
 
 <p>
-You freeze.
-</p>
-
-<p>
 You never pressed the button.
 </p>
 
 `,
 
 [
-
-{
-text:"CHECK MACHINE",
-action:checkMachine
-},
 
 {
 text:"WATCH TV",
@@ -244,6 +282,7 @@ action:watchTV
 );
 
 }
+
 
 
 
@@ -254,6 +293,8 @@ changeSanity(-5);
 
 seekerActivity += 5;
 
+updateMeters();
+
 
 setScene(`
 
@@ -262,44 +303,7 @@ The back door is unlocked.
 </p>
 
 <p>
-Cold air enters the house.
-</p>
-
-<p>
 You quickly lock it.
-</p>
-
-`,
-
-[
-
-{
-text:"WATCH TV",
-action:watchTV
-}
-
-]
-
-);
-
-}
-
-
-
-
-function checkMachine(){
-
-changeSanity(-5);
-
-
-setScene(`
-
-<p>
-The coffee machine looks normal.
-</p>
-
-<p>
-But the coffee is already finished.
 </p>
 
 `,
@@ -329,19 +333,12 @@ setScene(`
 </p>
 
 <p>
-Authorities are investigating reports of a group known as "The Seekers."
+Reports indicate a group known as
+"The Seekers" has been sighted nearby.
 </p>
 
 <p>
 Residents are advised to remain indoors.
-</p>
-
-<p>
-The broadcast ends.
-</p>
-
-<p>
-The house becomes silent.
 </p>
 
 `,
@@ -351,11 +348,6 @@ The house becomes silent.
 {
 text:"CHECK DOOR",
 action:doorEvent
-},
-
-{
-text:"CHECK CAMERAS",
-action:checkCameras
 }
 
 ]
@@ -367,11 +359,14 @@ action:checkCameras
 
 
 
+
 function doorEvent(){
 
 changeSanity(-10);
 
 seekerActivity += 10;
+
+updateMeters();
 
 
 setScene(`
@@ -391,11 +386,6 @@ Someone is trying the front door.
 {
 text:"LOCK DOOR",
 action:lockDoor
-},
-
-{
-text:"LOOK THROUGH PEEPHOLE",
-action:peephole
 }
 
 ]
@@ -412,15 +402,11 @@ function lockDoor(){
 setScene(`
 
 <p>
-You lock the deadbolt.
+You lock the door.
 </p>
 
 <p>
-The person outside stops moving.
-</p>
-
-<p>
-After a few seconds, footsteps disappear.
+The footsteps outside slowly disappear.
 </p>
 
 `,
@@ -428,89 +414,9 @@ After a few seconds, footsteps disappear.
 [
 
 {
-text:"CHECK CAMERAS",
-action:checkCameras
-}
-
-]
-
-);
-
-}
-
-
-
-
-function peephole(){
-
-changeSanity(-15);
-
-
-setScene(`
-
-<p>
-You look through the peephole.
-</p>
-
-<p>
-Nobody is there.
-</p>
-
-<p>
-Then a shadow moves across the hallway.
-</p>
-
-`,
-
-[
-
-{
-text:"LOCK DOOR",
-action:lockDoor
-}
-
-]
-
-);
-
-}
-
-
-
-
-
-function checkCameras(){
-
-changeSanity(-10);
-
-seekerActivity += 10;
-
-
-setScene(`
-
-<p>
-SECURITY SYSTEM CONNECTED.
-</p>
-
-<p>
-Camera 01: CLEAR.
-</p>
-
-<p>
-Camera 02: CLEAR.
-</p>
-
-<p>
-Camera 03: SIGNAL ERROR.
-</p>
-
-`,
-
-[
-
-{
-text:"CONTINUE TO NIGHT 2",
+text:"END NIGHT",
 action:nightTwo
+
 }
 
 ]
@@ -522,10 +428,7 @@ action:nightTwo
 
 
 
-// =====================
 // NIGHT 2
-// =====================
-
 
 function nightTwo(){
 
@@ -543,7 +446,7 @@ You survived the first night.
 </p>
 
 <p>
-But something is different.
+But now you need answers.
 </p>
 
 <p>
@@ -575,6 +478,8 @@ changeSanity(-5);
 
 seekerActivity += 10;
 
+updateMeters();
+
 
 setScene(`
 
@@ -583,15 +488,11 @@ setScene(`
 </p>
 
 <p>
-"The Seekers are not searching for people."
+"The Seekers are looking for something."
 </p>
 
 <p>
-"They are searching for something hidden."
-</p>
-
-<p>
-The signal cuts out.
+"The question is... what?"
 </p>
 
 `,
@@ -599,8 +500,8 @@ The signal cuts out.
 [
 
 {
-text:"END NIGHT",
-action:startGame
+text:"RETURN TO MENU",
+action:startMenu
 }
 
 ]
@@ -612,6 +513,33 @@ action:startGame
 
 
 
-updateMeters();
-startGame();
+
+function continueGame(){
+
+alert("NO SAVE DATA FOUND");
+
+}
+
+
+
+function lostHope(){
+
+alert("LOST HOPE MODE COMING SOON");
+
+}
+
+
+
+function settings(){
+
+alert("SETTINGS OFFLINE");
+
+}
+
+
+
+
+// LOAD MENU
+
+startMenu();
 

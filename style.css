@@ -1,93 +1,44 @@
-html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    background: black;
-    overflow: hidden;
-    font-family: monospace;
+body{
+    margin:0;
+    background:black;
+    font-family:Courier New, monospace;
 }
 
-
-.room {
-    width: 100vw;
-    height: 100vh;
-    background: radial-gradient(circle, #202020, #000);
-    color: white;
-    position: relative;
+.terminal{
+    width:90%;
+    max-width:900px;
+    margin:40px auto;
+    border:2px solid red;
+    padding:20px;
+    box-shadow:0 0 20px red;
 }
 
-
-.title {
-    position: absolute;
-    top: 20px;
-    width: 100%;
-    text-align: center;
-    color: red;
-    font-size: 24px;
-    letter-spacing: 5px;
+.header{
+    color:white;
+    border-bottom:1px solid red;
+    padding-bottom:10px;
+    margin-bottom:20px;
+    letter-spacing:3px;
 }
 
-
-.tv {
-    position: absolute;
-    right: 15%;
-    top: 35%;
-    width: 180px;
-    height: 120px;
-    background: black;
-    border: 4px solid gray;
-    box-shadow: 0 0 20px red;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+#story{
+    color:red;
+    line-height:1.8;
+    min-height:250px;
+    text-shadow:0 0 8px red;
 }
 
-
-.computer {
-    position: absolute;
-    left: 40%;
-    top: 60%;
-    width: 140px;
-    height: 90px;
-    background: #002b20;
-    border: 3px solid lime;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+button{
+    background:black;
+    color:white;
+    border:1px solid white;
+    padding:12px 20px;
+    margin-right:10px;
+    cursor:pointer;
+    font-family:inherit;
 }
 
-
-.window {
-    position: absolute;
-    left: 10%;
-    top: 25%;
-    width: 150px;
-    height: 220px;
-    background: #001020;
-    border: 5px solid #333;
-    cursor: pointer;
-}
-
-
-.door {
-    position: absolute;
-    right: 5%;
-    top: 25%;
-    width: 90px;
-    height: 250px;
-    background: #321;
-    border: 5px solid #111;
-    cursor: pointer;
-}
-
-
-#message {
-    position: absolute;
-    bottom: 25px;
-    width: 100%;
-    text-align: center;
-    color: #aaa;
-    font-size: 18px;
+button:hover{
+    background:white;
+    color:black;
 }

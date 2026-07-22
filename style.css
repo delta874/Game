@@ -2,8 +2,8 @@ html, body {
     width: 100%;
     height: 100%;
     margin: 0;
-    overflow: hidden;
     background: black;
+    overflow: hidden;
     font-family: monospace;
 }
 
@@ -11,7 +11,7 @@ html, body {
 .room {
     width: 100vw;
     height: 100vh;
-    background: radial-gradient(circle, #222, #000);
+    background: radial-gradient(circle, #202020, #000);
     color: white;
     position: relative;
 }
@@ -23,8 +23,8 @@ html, body {
     width: 100%;
     text-align: center;
     color: red;
-    letter-spacing: 5px;
     font-size: 24px;
+    letter-spacing: 5px;
 }
 
 
@@ -36,10 +36,11 @@ html, body {
     height: 120px;
     background: black;
     border: 4px solid gray;
-    box-shadow: 0 0 25px red;
+    box-shadow: 0 0 20px red;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 
@@ -49,11 +50,12 @@ html, body {
     top: 60%;
     width: 140px;
     height: 90px;
-    background: darkgreen;
+    background: #002b20;
     border: 3px solid lime;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 
@@ -65,6 +67,7 @@ html, body {
     height: 220px;
     background: #001020;
     border: 5px solid #333;
+    cursor: pointer;
 }
 
 
@@ -76,6 +79,7 @@ html, body {
     height: 250px;
     background: #321;
     border: 5px solid #111;
+    cursor: pointer;
 }
 
 

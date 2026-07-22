@@ -33,11 +33,17 @@ function updateMeters(){
 
 
 
+// =====================
+// BUFFS / DEBUFFS
+// =====================
+
+
 function changeSanity(amount){
 
     sanity += amount;
 
     if(sanity > 100) sanity = 100;
+
     if(sanity < 0) sanity = 0;
 
     updateMeters();
@@ -51,6 +57,7 @@ function changeEnergy(amount){
     energy += amount;
 
     if(energy > 100) energy = 100;
+
     if(energy < 0) energy = 0;
 
     updateMeters();
@@ -64,6 +71,7 @@ function changeAwareness(amount){
     seekerActivity += amount;
 
     if(seekerActivity > 100) seekerActivity = 100;
+
     if(seekerActivity < 0) seekerActivity = 0;
 
     updateMeters();
@@ -73,7 +81,7 @@ function changeAwareness(amount){
 
 
 // =====================
-// SCENE SYSTEM
+// STORY DISPLAY SYSTEM
 // =====================
 
 
@@ -120,6 +128,10 @@ WELCOME TO THE SEEKER SECURITY TERMINAL
 SYSTEM READY.
 </p>
 
+<p>
+ALL SYSTEMS ONLINE.
+</p>
+
 `,
 
 [
@@ -153,6 +165,7 @@ action:settings
 
 
 
+
 function startGame(){
 
 night = 1;
@@ -173,6 +186,40 @@ nightOne();
 
 
 
+// =====================
+// MENU OPTIONS
+// =====================
+
+
+function continueGame(){
+
+alert("NO SAVE DATA FOUND");
+
+}
+
+
+
+
+function lostHope(){
+
+alert("LOST HOPE MODE COMING SOON");
+
+}
+
+
+
+
+function settings(){
+
+alert("SETTINGS OFFLINE");
+
+}
+
+
+
+// Start game menu
+
+startMenu();
 
 // =====================
 // NIGHT 1
@@ -180,6 +227,9 @@ nightOne();
 
 
 function nightOne(){
+
+night = 1;
+
 
 setScene(`
 
@@ -200,7 +250,7 @@ The clock reads 11:02 PM.
 </p>
 
 <p>
-For a moment everything feels normal.
+For a moment, everything feels normal.
 </p>
 
 `,
@@ -239,6 +289,10 @@ You check your phone.
 </p>
 
 <p>
+You have a message from your family.
+</p>
+
+<p>
 MOM:
 "Hey, just checking in. Let me know you're okay."
 </p>
@@ -249,7 +303,7 @@ DAD:
 </p>
 
 <p>
-You stare at the message for a moment.
+The message makes you feel a little better.
 </p>
 
 `,
@@ -275,6 +329,7 @@ action:makeCoffee
 
 
 
+
 function makeCoffee(){
 
 changeEnergy(10);
@@ -289,11 +344,15 @@ You walk into the kitchen.
 </p>
 
 <p>
-The coffee machine turns on.
+You make yourself coffee.
 </p>
 
 <p>
-You never pressed the button.
+The house is completely quiet.
+</p>
+
+<p>
+Almost too quiet.
 </p>
 
 `,
@@ -301,7 +360,7 @@ You never pressed the button.
 [
 
 {
-text:"CHECK MACHINE",
+text:"CHECK THE COFFEE MACHINE",
 action:checkMachine
 },
 
@@ -328,11 +387,19 @@ changeSanity(-5);
 setScene(`
 
 <p>
-The machine looks normal.
+You look at the coffee machine.
 </p>
 
 <p>
-But the coffee is already made.
+The machine is off.
+</p>
+
+<p>
+But the coffee cup is already filled.
+</p>
+
+<p>
+You don't remember making it.
 </p>
 
 `,
@@ -372,6 +439,10 @@ The lock is open.
 </p>
 
 <p>
+You are sure you locked it earlier.
+</p>
+
+<p>
 You quickly lock it.
 </p>
 
@@ -390,9 +461,8 @@ action:watchTV
 
 }
 
-// =====================
-// NIGHT 1 CONTINUED
-// =====================
+
+
 
 
 function watchTV(){
@@ -404,8 +474,8 @@ setScene(`
 </p>
 
 <p>
-Reports indicate a group known as
-"The Seekers" has been sighted throughout the county.
+Reports indicate that members of a group known as
+"The Seekers" have been sighted throughout the county.
 </p>
 
 <p>
@@ -413,7 +483,7 @@ Residents are advised to remain indoors.
 </p>
 
 <p>
-The broadcast suddenly cuts to static.
+The broadcast suddenly glitches.
 </p>
 
 `,
@@ -421,7 +491,7 @@ The broadcast suddenly cuts to static.
 [
 
 {
-text:"CHECK DOOR",
+text:"CHECK THE DOOR",
 action:doorEvent
 }
 
@@ -430,6 +500,7 @@ action:doorEvent
 );
 
 }
+
 
 
 
@@ -452,7 +523,60 @@ Someone is trying the front door.
 </p>
 
 <p>
-Your heart starts racing.
+You freeze.
+</p>
+
+`,
+
+[
+
+{
+text:"LOCK THE DOOR",
+action:lockDoor
+},
+
+{
+text:"LOOK THROUGH PEEPHOLE",
+action:peephole
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function peephole(){
+
+changeSanity(-15);
+
+changeAwareness(15);
+
+
+setScene(`
+
+<p>
+You slowly look through the peephole.
+</p>
+
+<p>
+Nobody is there.
+</p>
+
+<p>
+Then you notice something.
+</p>
+
+<p>
+The porch light is off.
+</p>
+
+<p>
+You never turned it off.
 </p>
 
 `,
@@ -473,6 +597,7 @@ action:lockDoor
 
 
 
+
 function lockDoor(){
 
 changeAwareness(-5);
@@ -489,7 +614,11 @@ The footsteps outside slowly disappear.
 </p>
 
 <p>
-You don't sleep much after that.
+You sit awake until morning.
+</p>
+
+<p>
+Something about tonight felt wrong.
 </p>
 
 `,
@@ -506,9 +635,6 @@ action:nightTwo
 );
 
 }
-
-
-
 
 
 // =====================
@@ -532,11 +658,11 @@ You barely slept.
 </p>
 
 <p>
-The house feels different tonight.
+The events from last night keep replaying in your mind.
 </p>
 
 <p>
-The television turns on by itself.
+The television suddenly turns on.
 </p>
 
 <p>
@@ -566,6 +692,7 @@ action:turnOffTV
 
 
 
+
 function watchSignal(){
 
 changeSanity(-10);
@@ -580,15 +707,15 @@ setScene(`
 </p>
 
 <p>
-The broadcast is not news.
+This is not a normal broadcast.
 </p>
 
 <p>
-It is an old recording.
+The screen shows old footage.
 </p>
 
 <p>
-A voice says:
+A voice speaks:
 </p>
 
 <p>
@@ -605,7 +732,7 @@ action:cameraCheck
 },
 
 {
-text:"TURN IT OFF",
+text:"TURN OFF TV",
 action:turnOffTV
 }
 
@@ -614,6 +741,7 @@ action:turnOffTV
 );
 
 }
+
 
 
 
@@ -628,15 +756,11 @@ changeAwareness(-5);
 setScene(`
 
 <p>
-You turn off the television.
+You turn the television off.
 </p>
 
 <p>
-The room becomes silent.
-</p>
-
-<p>
-For a moment, you feel safe.
+The silence feels better.
 </p>
 
 <p>
@@ -666,6 +790,7 @@ action:ignoreNoise
 
 
 
+
 function lookWindow(){
 
 changeSanity(-5);
@@ -676,7 +801,7 @@ changeAwareness(5);
 setScene(`
 
 <p>
-You slowly look outside.
+You slowly look through the blinds.
 </p>
 
 <p>
@@ -728,11 +853,11 @@ You decide not to look.
 </p>
 
 <p>
-Whatever is outside can stay outside.
+Whatever is outside can wait.
 </p>
 
 <p>
-You try to rest.
+You try to calm down.
 </p>
 
 `,
@@ -778,11 +903,11 @@ CAMERA 03: ONLINE
 </p>
 
 <p>
-The camera feed appears.
+The third camera feed appears.
 </p>
 
 <p>
-It is showing your hallway.
+It shows your hallway.
 </p>
 
 <p>
@@ -813,11 +938,11 @@ function nightTwoEnd(){
 setScene(`
 
 <p>
-You stare at the screen.
+You stare at the monitor.
 </p>
 
 <p>
-A shadow moves past the camera.
+A shadow moves across the hallway.
 </p>
 
 <p>
@@ -848,10 +973,6 @@ action:nightThree
 
 
 // =====================
-// NIGHT 3 PLACEHOLDER
-// =====================
-
-// =====================
 // NIGHT 3 - THE OUTSIDE
 // =====================
 
@@ -872,11 +993,11 @@ You haven't stepped outside in days.
 </p>
 
 <p>
-The walls of your house feel like they are closing in.
+The house feels smaller every hour.
 </p>
 
 <p>
-You decide you need fresh air.
+You need fresh air.
 </p>
 
 `,
@@ -902,6 +1023,7 @@ action:stayInside
 
 
 
+
 function goOutside(){
 
 changeEnergy(-15);
@@ -918,16 +1040,16 @@ You slowly open the front door.
 </p>
 
 <p>
-The street is completely empty.
+The street is empty.
 </p>
 
 <p>
 No cars.
-No people.
+No neighbors.
 </p>
 
 <p>
-The entire neighborhood feels abandoned.
+Nothing.
 </p>
 
 `,
@@ -940,7 +1062,7 @@ action:exploreStreet
 },
 
 {
-text:"GO BACK INSIDE",
+text:"RETURN HOME",
 action:returnInside
 }
 
@@ -972,11 +1094,7 @@ You sit quietly.
 </p>
 
 <p>
-Then you hear something outside.
-</p>
-
-<p>
-Three knocks.
+Then you hear three knocks.
 </p>
 
 `,
@@ -989,7 +1107,7 @@ action:windowCheck
 },
 
 {
-text:"IGNORE IT",
+text:"IGNORE KNOCKS",
 action:ignoreKnocks
 }
 
@@ -1019,15 +1137,15 @@ You walk down the street.
 </p>
 
 <p>
-A strange symbol is painted on a nearby wall.
+The neighborhood feels abandoned.
 </p>
 
 <p>
-It matches the symbol from the broadcast.
+On a nearby wall you see a strange symbol.
 </p>
 
 <p>
-Someone has been here recently.
+It matches the symbol from the broadcasts.
 </p>
 
 `,
@@ -1064,15 +1182,11 @@ changeAwareness(10);
 setScene(`
 
 <p>
-The moment you touch it...
+The moment you touch the symbol...
 </p>
 
 <p>
 Your phone turns on.
-</p>
-
-<p>
-A message appears.
 </p>
 
 <p>
@@ -1096,7 +1210,9 @@ action:returnInside
 }
 
 
-
+// =====================
+// NIGHT 3 CONTINUED
+// =====================
 
 
 function returnInside(){
@@ -1111,7 +1227,7 @@ You rush back inside.
 </p>
 
 <p>
-You lock the door.
+You lock every door and window.
 </p>
 
 <p>
@@ -1119,7 +1235,7 @@ But you can't stop thinking...
 </p>
 
 <p>
-Someone was watching.
+Someone was watching you.
 </p>
 
 `,
@@ -1129,7 +1245,6 @@ Someone was watching.
 {
 text:"CONTINUE",
 action:nightFour
-
 }
 
 ]
@@ -1152,7 +1267,7 @@ changeAwareness(5);
 setScene(`
 
 <p>
-You look outside.
+You slowly look outside.
 </p>
 
 <p>
@@ -1160,7 +1275,11 @@ Nobody is there.
 </p>
 
 <p>
-But there is a footprint near your window.
+But something catches your attention.
+</p>
+
+<p>
+There is a footprint right below your window.
 </p>
 
 `,
@@ -1192,11 +1311,11 @@ changeAwareness(-5);
 setScene(`
 
 <p>
-You ignore the sound.
+You ignore the knocking.
 </p>
 
 <p>
-Eventually it stops.
+After a few minutes it stops.
 </p>
 
 <p>
@@ -1210,7 +1329,6 @@ You hope you made the right choice.
 {
 text:"CONTINUE",
 action:nightFour
-
 }
 
 ]
@@ -1227,6 +1345,7 @@ function lockWindow(){
 
 changeAwareness(-5);
 
+
 setScene(`
 
 <p>
@@ -1234,7 +1353,7 @@ You lock the window.
 </p>
 
 <p>
-The house feels safer.
+The house feels slightly safer.
 </p>
 
 `,
@@ -1244,55 +1363,6 @@ The house feels safer.
 {
 text:"CONTINUE",
 action:nightFour
-
-}
-
-]
-
-);
-
-}
-
-// =====================
-// NIGHT 4 - THE ATTIC
-// =====================
-
-
-function nightFour){{
-
-night  4;
-
-
-setScene(`
-
-<p>
-[NIGHT 4]
-</p>
-
-<p>
-You can't keep waiting.
-</p>
-
-<p>
-You decide to search the house.
-</p>
-
-<p>
-Maybe there are answers somewhere.
-</p>
-
-`,
-
-[
-
-{
-text:"SEARCH ATTIC",
-action:searchAttic
-},
-
-{
-text:"REST",
-action:restNightFour
 }
 
 ]
@@ -1303,145 +1373,6 @@ action:restNightFour
 
 
 
-
-function searchAttic(){
-
-changeEnergy(-10);
-
-changeSanity(-5);
-
-changeAwareness(10);
-
-
-setScene(`
-
-<p>
-The attic is covered in dust.
-</p>
-
-<p>
-You find old family photos.
-</p>
-
-<p>
-But one picture makes you stop.
-</p>
-
-<p>
-There is a strange symbol in the background.
-</p>
-
-`,
-
-[
-
-{
-text:"OPEN BOX",
-action:openBox
-},
-
-{
-text:"LEAVE IT",
-action:leaveBox
-}
-
-]
-
-);
-
-}
-
-
-
-
-
-function restNightFour(){
-
-changeEnergy(20);
-
-changeSanity(5);
-
-changeAwareness(-5);
-
-
-setScene(`
-
-<p>
-You decide to rest.
-</p>
-
-<p>
-For the first time in days...
-</p>
-
-<p>
-you almost feel normal.
-</p>
-
-<p>
-Almost.
-</p>
-
-`,
-
-[
-
-{
-text:"CONTINUE",
-action:nightFive
-
-}
-
-]
-
-);
-
-}
-
-
-
-
-
-function openBox(){
-
-changeSanity(-10);
-
-changeAwareness(10);
-
-
-setScene(`
-
-<p>
-Inside the box are old newspaper clippings.
-</p>
-
-<p>
-The Seekers have existed for decades.
-</p>
-
-<p>
-This isn't new.
-</p>
-
-<p>
-They have been watching people for years.
-</p>
-
-`,
-
-[
-
-{
-text:"CONTINUE",
-action:nightFive
-
-}
-
-]
-
-);
-
-}
 
 
 // =====================
@@ -1469,11 +1400,7 @@ The Seekers know something about you.
 </p>
 
 <p>
-You need answers.
-</p>
-
-<p>
-You decide to search the house.
+You decide to search the house for answers.
 </p>
 
 `,
@@ -1520,16 +1447,11 @@ Dust covers everything.
 </p>
 
 <p>
-Old boxes, forgotten belongings,
-and family photos fill the room.
+Old photos and forgotten belongings fill the room.
 </p>
 
 <p>
-Something catches your eye.
-</p>
-
-<p>
-A small locked box hidden behind an old picture frame.
+Behind an old picture frame, you find a locked box.
 </p>
 
 `,
@@ -1568,16 +1490,11 @@ changeAwareness(-5);
 setScene(`
 
 <p>
-You decide to rest instead.
+You decide to rest.
 </p>
 
 <p>
-For the first time in days,
-the house feels quiet.
-</p>
-
-<p>
-You almost forget about The Seekers.
+For a moment, everything feels normal.
 </p>
 
 <p>
@@ -1617,14 +1534,13 @@ You slowly open the box.
 </p>
 
 <p>
-Inside are old newspaper clippings,
-photographs, and handwritten notes.
+Inside are newspaper clippings,
+photos, and handwritten notes.
 </p>
 
 <p>
-The articles are about disappearances,
-strange sightings, and people reporting
-the same symbol.
+The articles describe disappearances
+and sightings of the same symbol.
 </p>
 
 <p>
@@ -1642,7 +1558,7 @@ You realize something disturbing.
 
 <p>
 Every time you searched for them...
-they may have been searching for you too.
+they may have been searching for you.
 </p>
 
 `,
@@ -1690,7 +1606,7 @@ Same group.
 </p>
 
 <p>
-A final message is written at the bottom:
+A final message is written:
 </p>
 
 <p>
@@ -1699,7 +1615,7 @@ They are looking for a person."
 </p>
 
 <p>
-You hear a noise downstairs.
+A noise comes from downstairs.
 </p>
 
 `,
@@ -1707,7 +1623,7 @@ You hear a noise downstairs.
 [
 
 {
-text:"GO CHECK",
+text:"CHECK DOWNSTAIRS",
 action:checkDownstairs
 },
 
@@ -1741,10 +1657,6 @@ You close the box.
 
 <p>
 Some answers might be better left hidden.
-</p>
-
-<p>
-You leave the attic.
 </p>
 
 `,
@@ -1788,7 +1700,7 @@ But the front door is open.
 </p>
 
 <p>
-You are certain you locked it.
+You know you locked it.
 </p>
 
 `,
@@ -1796,9 +1708,8 @@ You are certain you locked it.
 [
 
 {
-text:"LOCK DOOR",
+text:"CONTINUE",
 action:nightFive
-
 }
 
 ]
@@ -1825,12 +1736,8 @@ You stay completely still.
 </p>
 
 <p>
-After a few minutes,
+After several minutes,
 the noise stops.
-</p>
-
-<p>
-You decide not to investigate.
 </p>
 
 `,
@@ -1840,7 +1747,6 @@ You decide not to investigate.
 {
 text:"CONTINUE",
 action:nightFive
-
 }
 
 ]
@@ -1851,36 +1757,51 @@ action:nightFive
 
 
 
+
+
 // =====================
-// OTHER MENU OPTIONS
+// NIGHT 5 PLACEHOLDER
 // =====================
 
 
-function continueGame(){
+function nightFive(){
 
-alert("NO SAVE DATA FOUND");
+night = 5;
 
+
+setScene(`
+
+<p>
+[NIGHT 5]
+</p>
+
+<p>
+The information you found changes everything.
+</p>
+
+<p>
+The Seekers are not just nearby...
+</p>
+
+<p>
+They have been watching for years.
+</p>
+
+<p>
+NIGHT 5 COMING SOON...
+</p>
+
+`,
+
+[
+
+{
+text:"RETURN TO MENU",
+action:startMenu
 }
 
+]
 
-
-function lostHope(){
-
-alert("LOST HOPE MODE COMING SOON");
+);
 
 }
-
-
-
-function settings(){
-
-alert("SETTINGS OFFLINE");
-
-}
-
-
-
-// START
-
-startMenu();
-

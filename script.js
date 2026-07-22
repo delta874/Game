@@ -851,8 +851,15 @@ action:nightThree
 // NIGHT 3 PLACEHOLDER
 // =====================
 
+// =====================
+// NIGHT 3 - THE OUTSIDE
+// =====================
+
 
 function nightThree(){
+
+night = 3;
+
 
 setScene(`
 
@@ -861,15 +868,15 @@ setScene(`
 </p>
 
 <p>
-The outside world has been silent for days.
+You haven't stepped outside in days.
 </p>
 
 <p>
-You decide you cannot stay trapped forever.
+The walls of your house feel like they are closing in.
 </p>
 
 <p>
-COMING SOON...
+You decide you need fresh air.
 </p>
 
 `,
@@ -877,8 +884,13 @@ COMING SOON...
 [
 
 {
-text:"RETURN TO MENU",
-action:startMenu
+text:"GO OUTSIDE",
+action:goOutside
+},
+
+{
+text:"STAY INSIDE",
+action:stayInside
 }
 
 ]
@@ -888,6 +900,585 @@ action:startMenu
 }
 
 
+
+
+function goOutside(){
+
+changeEnergy(-15);
+
+changeSanity(-5);
+
+changeAwareness(15);
+
+
+setScene(`
+
+<p>
+You slowly open the front door.
+</p>
+
+<p>
+The street is completely empty.
+</p>
+
+<p>
+No cars.
+No people.
+</p>
+
+<p>
+The entire neighborhood feels abandoned.
+</p>
+
+`,
+
+[
+
+{
+text:"EXPLORE STREET",
+action:exploreStreet
+},
+
+{
+text:"GO BACK INSIDE",
+action:returnInside
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function stayInside(){
+
+changeEnergy(10);
+
+changeAwareness(-5);
+
+
+setScene(`
+
+<p>
+You decide staying inside is safer.
+</p>
+
+<p>
+You sit quietly.
+</p>
+
+<p>
+Then you hear something outside.
+</p>
+
+<p>
+Three knocks.
+</p>
+
+`,
+
+[
+
+{
+text:"CHECK WINDOW",
+action:windowCheck
+},
+
+{
+text:"IGNORE IT",
+action:ignoreKnocks
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function exploreStreet(){
+
+changeEnergy(-10);
+
+changeSanity(-10);
+
+changeAwareness(10);
+
+
+setScene(`
+
+<p>
+You walk down the street.
+</p>
+
+<p>
+A strange symbol is painted on a nearby wall.
+</p>
+
+<p>
+It matches the symbol from the broadcast.
+</p>
+
+<p>
+Someone has been here recently.
+</p>
+
+`,
+
+[
+
+{
+text:"TOUCH SYMBOL",
+action:touchSymbol
+},
+
+{
+text:"RETURN HOME",
+action:returnInside
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function touchSymbol(){
+
+changeSanity(-15);
+
+changeAwareness(10);
+
+
+setScene(`
+
+<p>
+The moment you touch it...
+</p>
+
+<p>
+Your phone turns on.
+</p>
+
+<p>
+A message appears.
+</p>
+
+<p>
+UNKNOWN:
+"We know you see us."
+</p>
+
+`,
+
+[
+
+{
+text:"RUN HOME",
+action:returnInside
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function returnInside(){
+
+changeEnergy(-5);
+
+
+setScene(`
+
+<p>
+You rush back inside.
+</p>
+
+<p>
+You lock the door.
+</p>
+
+<p>
+But you can't stop thinking...
+</p>
+
+<p>
+Someone was watching.
+</p>
+
+`,
+
+[
+
+{
+text:"CONTINUE",
+action:nightFour
+
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function windowCheck(){
+
+changeSanity(-10);
+
+changeAwareness(5);
+
+
+setScene(`
+
+<p>
+You look outside.
+</p>
+
+<p>
+Nobody is there.
+</p>
+
+<p>
+But there is a footprint near your window.
+</p>
+
+`,
+
+[
+
+{
+text:"LOCK WINDOW",
+action:lockWindow
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function ignoreKnocks(){
+
+changeSanity(5);
+
+changeAwareness(-5);
+
+
+setScene(`
+
+<p>
+You ignore the sound.
+</p>
+
+<p>
+Eventually it stops.
+</p>
+
+<p>
+You hope you made the right choice.
+</p>
+
+`,
+
+[
+
+{
+text:"CONTINUE",
+action:nightFour
+
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function lockWindow(){
+
+changeAwareness(-5);
+
+setScene(`
+
+<p>
+You lock the window.
+</p>
+
+<p>
+The house feels safer.
+</p>
+
+`,
+
+[
+
+{
+text:"CONTINUE",
+action:nightFour
+
+}
+
+]
+
+);
+
+}
+
+// =====================
+// NIGHT 4 - THE ATTIC
+// =====================
+
+
+function nightFour(){
+
+night = 4;
+
+
+setScene(`
+
+<p>
+[NIGHT 4]
+</p>
+
+<p>
+You can't keep waiting.
+</p>
+
+<p>
+You decide to search the house.
+</p>
+
+<p>
+Maybe there are answers somewhere.
+</p>
+
+`,
+
+[
+
+{
+text:"SEARCH ATTIC",
+action:searchAttic
+},
+
+{
+text:"REST",
+action:restNightFour
+}
+
+]
+
+);
+
+}
+
+
+
+
+function searchAttic(){
+
+changeEnergy(-10);
+
+changeSanity(-5);
+
+changeAwareness(10);
+
+
+setScene(`
+
+<p>
+The attic is covered in dust.
+</p>
+
+<p>
+You find old family photos.
+</p>
+
+<p>
+But one picture makes you stop.
+</p>
+
+<p>
+There is a strange symbol in the background.
+</p>
+
+`,
+
+[
+
+{
+text:"OPEN BOX",
+action:openBox
+},
+
+{
+text:"LEAVE IT",
+action:leaveBox
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function restNightFour(){
+
+changeEnergy(20);
+
+changeSanity(5);
+
+changeAwareness(-5);
+
+
+setScene(`
+
+<p>
+You decide to rest.
+</p>
+
+<p>
+For the first time in days...
+</p>
+
+<p>
+you almost feel normal.
+</p>
+
+<p>
+Almost.
+</p>
+
+`,
+
+[
+
+{
+text:"CONTINUE",
+action:nightFive
+
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function openBox(){
+
+changeSanity(-10);
+
+changeAwareness(10);
+
+
+setScene(`
+
+<p>
+Inside the box are old newspaper clippings.
+</p>
+
+<p>
+The Seekers have existed for decades.
+</p>
+
+<p>
+This isn't new.
+</p>
+
+<p>
+They have been watching people for years.
+</p>
+
+`,
+
+[
+
+{
+text:"CONTINUE",
+action:nightFive
+
+}
+
+]
+
+);
+
+}
+
+
+
+
+
+function leaveBox(){
+
+changeSanity(5);
+
+changeAwareness(-5);
+
+
+setScene(`
+
+<p>
+You close the box.
+</p>
+
+<p>
+Some answers might be better left hidden.
+</p>
+
+`,
+
+[
+
+{
+text:"CONTINUE",
+action:nightFive
+
+}
+
+]
+
+);
+
+}
 
 
 

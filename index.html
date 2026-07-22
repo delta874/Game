@@ -1,43 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Channel Unknown</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+<div class="terminal">
 
-<body>
-
-<div class="room">
-
-    <div class="title">
-        CHANNEL UNKNOWN
+    <div class="header">
+        SEEKER SECURITY TERMINAL v1.0
     </div>
 
-    <div class="window" onclick="lookWindow()">
-        WINDOW
+    <div id="story">
+
+        <p>
+        [EMERGENCY BROADCAST]
+        </p>
+
+        <p>
+        Reports indicate that members of a cult known as
+        "The Seekers" have been sighted throughout the county.
+        Residents are advised to remain indoors.
+        </p>
+
+        <p>
+        As the broadcast ends, you hear someone picking your
+        front door lock.
+        </p>
+
     </div>
 
-    <div class="tv" onclick="watchTV()">
-        TV
-    </div>
+    <div class="choices">
 
-    <div class="computer" onclick="checkCameras()">
-        SECURITY
-    </div>
+        <button onclick="lockDoor()">
+            LOCK DOOR
+        </button>
 
-    <div class="door" onclick="checkDoor()">
-        DOOR
-    </div>
+        <button onclick="checkCameras()">
+            CHECK CAMERAS
+        </button>
 
-
-    <div id="message">
-        You are alone in your room...
     </div>
 
 </div>
-
-
-<script src="script.js"></script>
-
-</body>
-</html>

@@ -1,1 +1,5 @@
-alert("SCRIPT IS WORKING");
+alert("BEFORE MENU");
+
+startMenu();
+
+alert("AFTER MENU");

@@ -1,3 +1,4 @@
+alert("SCRIPT LOADED");
 let night = 1;
 
 let sanity = 100;

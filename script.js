@@ -1,5 +1,5 @@
-alert("BEFORE MENU");
+alert("1");
 
-startMenu();
+document.getElementById("story").innerHTML = "TEST";
 
-alert("AFTER MENU");
+alert("2");

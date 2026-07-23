@@ -1,3 +1,4 @@
+
 alert("BEFORE");
 
 function setScene() {

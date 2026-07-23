@@ -1,5 +1,4 @@
 alert("SCRIPT START");
-alert("SCRIPT LOADED");
 
 let night = 1;
 

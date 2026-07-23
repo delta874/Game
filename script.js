@@ -1,3 +1,4 @@
+alert("SCRIPT START");
 alert("SCRIPT LOADED");
 
 let night = 1;
@@ -3178,8 +3179,4 @@ function lostHopeGameOver(){
 // =====================
 
 
-alert("BEFORE STARTMENU");
-
-startMenu();
-
-alert("AFTER STARTMENU");
+alert("SCRIPT END");

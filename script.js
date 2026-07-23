@@ -243,7 +243,17 @@ alert("NO SAVE DATA FOUND");
 
 function lostHope(){
 
-alert("LOST HOPE MODE COMING SOON");
+    night = 1;
+
+    sanity = 100;
+    energy = 100;
+    seekerActivity = 20;
+
+    updateMeters();
+
+    lostHopeNight();
+
+}
 
 }
 
@@ -664,8 +674,10 @@ Something about tonight felt wrong.
 [
 
 {
-text:"CONTINUE",
+{
+text:"END NIGHT",
 action:nightTwo
+}
 }
 
 ]
@@ -2861,3 +2873,300 @@ action:startMenu
 // START GAME
 
 startMenu();
+// =====================
+// LOST HOPE MODE
+// =====================
+
+let lostHopeNightNumber = 1;
+
+
+
+function lostHopeNight(){
+
+    lostHopeNightNumber = night;
+
+
+    setScene(`
+
+    <p>
+    LOST HOPE MODE
+    </p>
+
+    <p>
+    SURVIVAL NIGHT: ${lostHopeNightNumber}
+    </p>
+
+    <p>
+    The house is silent.
+    </p>
+
+    <p>
+    You don't know how long you have been here anymore.
+    </p>
+
+    <p>
+    The Seekers are still outside.
+    </p>
+
+    `,
+
+    [
+
+    {
+    text:"CHECK CAMERAS",
+    action:lostHopeCamera
+    },
+
+    {
+    text:"REST",
+    action:lostHopeRest
+    },
+
+    {
+    text:"SEARCH HOUSE",
+    action:lostHopeSearch
+    }
+
+    ]
+
+    );
+
+}
+
+
+
+
+
+function lostHopeCamera(){
+
+    changeEnergy(-10);
+
+    changeSanity(-5);
+
+    changeAwareness(10);
+
+
+    setScene(`
+
+    <p>
+    You check the security cameras.
+    </p>
+
+    <p>
+    Camera 1: Clear.
+    </p>
+
+    <p>
+    Camera 2: Static.
+    </p>
+
+    <p>
+    Camera 3:
+    </p>
+
+    <p>
+    Something moved.
+    </p>
+
+    `,
+
+    [
+
+    {
+    text:"CONTINUE NIGHT",
+    action:lostHopeSurvive
+    }
+
+    ]
+
+    );
+
+}
+
+
+
+
+
+function lostHopeRest(){
+
+    changeEnergy(20);
+
+    changeSanity(5);
+
+    changeAwareness(5);
+
+
+    setScene(`
+
+    <p>
+    You try to sleep.
+    </p>
+
+    <p>
+    For a few minutes...
+    everything feels normal.
+    </p>
+
+    <p>
+    Then you hear footsteps.
+    </p>
+
+    `,
+
+    [
+
+    {
+    text:"CONTINUE NIGHT",
+    action:lostHopeSurvive
+    }
+
+    ]
+
+    );
+
+}
+
+
+
+
+
+function lostHopeSearch(){
+
+    changeEnergy(-15);
+
+    changeSanity(-10);
+
+
+    let event = Math.floor(Math.random()*3);
+
+
+    if(event === 0){
+
+        setScene(`
+
+        <p>
+        You find old notes about The Seekers.
+        </p>
+
+        <p>
+        Someone else survived before you.
+        </p>
+
+        `,
+
+        [
+
+        {
+        text:"CONTINUE NIGHT",
+        action:lostHopeSurvive
+        }
+
+        ]);
+
+    }
+
+    else{
+
+        setScene(`
+
+        <p>
+        You hear something upstairs.
+        </p>
+
+        <p>
+        You decide to return before it finds you.
+        </p>
+
+        `,
+
+        [
+
+        {
+        text:"CONTINUE NIGHT",
+        action:lostHopeSurvive
+        }
+
+        ]);
+
+    }
+
+}
+
+
+
+
+
+function lostHopeSurvive(){
+
+    night++;
+
+
+    changeEnergy(-5);
+
+    changeAwareness(5);
+
+
+    if(sanity <= 0 || energy <= 0 || seekerActivity >= 100){
+
+        lostHopeGameOver();
+
+    }
+
+    else{
+
+        lostHopeNight();
+
+    }
+
+}
+
+
+
+
+
+function lostHopeGameOver(){
+
+
+setScene(`
+
+<p>
+LOST HOPE TERMINATED
+</p>
+
+<p>
+YOU SURVIVED:
+</p>
+
+<p>
+${night} NIGHTS
+</p>
+
+<p>
+FINAL SANITY:
+${sanity}%
+</p>
+
+<p>
+FINAL ENERGY:
+${energy}%
+</p>
+
+<p>
+FINAL SEEKER ACTIVITY:
+${seekerActivity}%
+</p>
+
+`,
+
+[
+
+{
+text:"RETURN TO MENU",
+action:startMenu
+}
+
+]
+
+);
+
+}

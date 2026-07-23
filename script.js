@@ -78,7 +78,48 @@ function changeAwareness(amount){
 
 }
 
+function checkStatus(){
 
+    let warning = "";
+
+
+    if(sanity <= 40){
+
+        warning += `
+        <p>
+        ⚠ WARNING: Your thoughts are becoming unstable.
+        </p>
+        `;
+
+    }
+
+
+    if(energy <= 30){
+
+        warning += `
+        <p>
+        ⚠ WARNING: You are exhausted.
+        Your reactions are slower.
+        </p>
+        `;
+
+    }
+
+
+    if(seekerActivity >= 70){
+
+        warning += `
+        <p>
+        ⚠ WARNING: Something is paying attention.
+        </p>
+        `;
+
+    }
+
+
+    return warning;
+
+}
 
 // =====================
 // STORY DISPLAY SYSTEM

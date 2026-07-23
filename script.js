@@ -673,7 +673,6 @@ Something about tonight felt wrong.
 
 `,
 
-[
 {
 text:"END NIGHT",
 action:nightTwo

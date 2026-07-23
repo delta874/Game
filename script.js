@@ -3179,4 +3179,4 @@ function lostHopeGameOver(){
 // =====================
 
 
-startMenu();startMenu
+startMenu();

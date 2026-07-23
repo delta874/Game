@@ -3178,4 +3178,4 @@ function lostHopeGameOver(){
 // LOAD GAME
 // =====================
 
-startMenu();  
+

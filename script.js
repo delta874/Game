@@ -1,5 +1,3 @@
-alert("SCRIPT LOADED");
-
 let night = 1;
 
 let sanity = 100;
@@ -674,8 +672,6 @@ Something about tonight felt wrong.
 `,
 
 [
-
-{
 {
 text:"END NIGHT",
 action:nightTwo
@@ -2049,7 +2045,7 @@ Minutes pass.
 </p>
 
 <p>
-The person never moves.
+The person never move.
 </p>
 
 <p>

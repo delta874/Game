@@ -3170,3 +3170,7 @@ action:startMenu
 );
 
 }
+
+// START GAME
+
+startMenu();

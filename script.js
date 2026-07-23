@@ -128,7 +128,7 @@ function checkStatus(){
 
 function setScene(text, buttons){
 
-    document.getElementById("story").innerHTML = text;
+    document.getElementById("story").innerHTML = text + checkStatus();
 
 
     let box = document.getElementById("choices");

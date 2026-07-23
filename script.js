@@ -2871,9 +2871,12 @@ action:startMenu
 }
 
 
-// =====================
+
+
+  // =====================
 // LOST HOPE MODE
 // =====================
+
 
 let lostHopeNightNumber = 1;
 
@@ -2895,15 +2898,15 @@ function lostHopeNight(){
     </p>
 
     <p>
-    The house is silent.
-    </p>
-
-    <p>
-    You don't know how long you have been here anymore.
+    The story is over.
     </p>
 
     <p>
     The Seekers are still outside.
+    </p>
+
+    <p>
+    How long can you survive?
     </p>
 
     `,
@@ -2911,23 +2914,21 @@ function lostHopeNight(){
     [
 
     {
-    text:"CHECK CAMERAS",
-    action:lostHopeCamera
+        text:"CHECK CAMERAS",
+        action:lostHopeCamera
     },
 
     {
-    text:"REST",
-    action:lostHopeRest
+        text:"REST",
+        action:lostHopeRest
     },
 
     {
-    text:"SEARCH HOUSE",
-    action:lostHopeSearch
+        text:"SEARCH HOUSE",
+        action:lostHopeSearch
     }
 
-    ]
-
-    );
+    ]);
 
 }
 
@@ -2947,7 +2948,7 @@ function lostHopeCamera(){
     setScene(`
 
     <p>
-    You check the security cameras.
+    You check the cameras.
     </p>
 
     <p>
@@ -2963,7 +2964,7 @@ function lostHopeCamera(){
     </p>
 
     <p>
-    Something moved.
+    Something is standing there.
     </p>
 
     `,
@@ -2971,13 +2972,11 @@ function lostHopeCamera(){
     [
 
     {
-    text:"CONTINUE NIGHT",
-    action:lostHopeSurvive
+        text:"CONTINUE NIGHT",
+        action:lostHopeEndNight
     }
 
-    ]
-
-    );
+    ]);
 
 }
 
@@ -2997,12 +2996,11 @@ function lostHopeRest(){
     setScene(`
 
     <p>
-    You try to sleep.
+    You try to rest.
     </p>
 
     <p>
-    For a few minutes...
-    everything feels normal.
+    For a moment everything feels normal.
     </p>
 
     <p>
@@ -3014,13 +3012,11 @@ function lostHopeRest(){
     [
 
     {
-    text:"CONTINUE NIGHT",
-    action:lostHopeSurvive
+        text:"CONTINUE NIGHT",
+        action:lostHopeEndNight
     }
 
-    ]
-
-    );
+    ]);
 
 }
 
@@ -3035,7 +3031,7 @@ function lostHopeSearch(){
     changeSanity(-10);
 
 
-    let event = Math.floor(Math.random()*3);
+    let event = Math.floor(Math.random()*2);
 
 
     if(event === 0){
@@ -3043,11 +3039,11 @@ function lostHopeSearch(){
         setScene(`
 
         <p>
-        You find old notes about The Seekers.
+        You find old documents.
         </p>
 
         <p>
-        Someone else survived before you.
+        The Seekers have been here before.
         </p>
 
         `,
@@ -3055,8 +3051,8 @@ function lostHopeSearch(){
         [
 
         {
-        text:"CONTINUE NIGHT",
-        action:lostHopeSurvive
+            text:"CONTINUE NIGHT",
+            action:lostHopeEndNight
         }
 
         ]);
@@ -3068,11 +3064,11 @@ function lostHopeSearch(){
         setScene(`
 
         <p>
-        You hear something upstairs.
+        You hear something move upstairs.
         </p>
 
         <p>
-        You decide to return before it finds you.
+        You leave before finding out what it was.
         </p>
 
         `,
@@ -3080,8 +3076,8 @@ function lostHopeSearch(){
         [
 
         {
-        text:"CONTINUE NIGHT",
-        action:lostHopeSurvive
+            text:"CONTINUE NIGHT",
+            action:lostHopeEndNight
         }
 
         ]);
@@ -3094,7 +3090,8 @@ function lostHopeSearch(){
 
 
 
-function lostHopeSurvive(){
+function lostHopeEndNight(){
+
 
     night++;
 
@@ -3104,7 +3101,11 @@ function lostHopeSurvive(){
     changeAwareness(5);
 
 
-    if(sanity <= 0 || energy <= 0 || seekerActivity >= 100){
+    if(
+        sanity <= 0 ||
+        energy <= 0 ||
+        seekerActivity >= 100
+    ){
 
         lostHopeGameOver();
 
@@ -3125,50 +3126,56 @@ function lostHopeSurvive(){
 function lostHopeGameOver(){
 
 
-setScene(`
+    setScene(`
 
-<p>
-LOST HOPE TERMINATED
-</p>
+    <p>
+    LOST HOPE TERMINATED
+    </p>
 
-<p>
-YOU SURVIVED:
-</p>
 
-<p>
-${night} NIGHTS
-</p>
+    <p>
+    NIGHTS SURVIVED:
+    ${night}
+    </p>
 
-<p>
-FINAL SANITY:
-${sanity}%
-</p>
 
-<p>
-FINAL ENERGY:
-${energy}%
-</p>
+    <p>
+    FINAL SANITY:
+    ${sanity}%
+    </p>
 
-<p>
-FINAL SEEKER ACTIVITY:
-${seekerActivity}%
-</p>
 
-`,
+    <p>
+    FINAL ENERGY:
+    ${energy}%
+    </p>
 
-[
 
-{
-text:"RETURN TO MENU",
-action:startMenu
+    <p>
+    FINAL SEEKER ACTIVITY:
+    ${seekerActivity}%
+    </p>
+
+
+    `,
+
+    [
+
+    {
+        text:"RETURN TO MENU",
+        action:startMenu
+    }
+
+    ]);
+
 }
 
-]
 
-);
 
-}
 
-// START GAME
 
-startMenu();
+// =====================
+// LOAD GAME
+// =====================
+
+startMenu();  

@@ -1,5 +1,9 @@
-alert("1");
+alert("BEFORE");
 
-document.getElementById("story").innerHTML = "TEST";
+function startMenu() {
+    alert("INSIDE STARTMENU");
+}
 
-alert("2");
+startMenu();
+
+alert("AFTER");

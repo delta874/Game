@@ -2871,7 +2871,6 @@ action:startMenu
 }
 
 
-startMenu();
 // =====================
 // LOST HOPE MODE
 // =====================

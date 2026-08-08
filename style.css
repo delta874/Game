@@ -1,1 +1,57 @@
+body {
+    background: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
 
+h1 {
+    margin-top: 30px;
+}
+
+.engine {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto;
+    max-width: 900px;
+}
+
+.section {
+    width: 150px;
+    height: 150px;
+    border: 3px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.combustor {
+    background: #321;
+}
+
+.blades {
+    font-size: 55px;
+}
+
+.flame {
+    font-size: 55px;
+}
+
+.exhaust {
+    font-size: 35px;
+    margin-left: 20px;
+}
+
+.exhaust p {
+    font-size: 16px;
+}
+
+.controls {
+    margin: 30px;
+}
+
+input[type="range"] {
+    width: 300px;
+}
